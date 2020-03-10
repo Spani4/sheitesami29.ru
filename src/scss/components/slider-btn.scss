@@ -1,0 +1,49 @@
+.slider-btn {
+    @include transition(opacity);
+
+    position: absolute;
+    width: 70px;
+    height: 120px;
+    padding: 10px;
+    z-index: 1;
+
+    &:hover {
+        opacity: .6;
+    }
+
+    &.left {
+        left: 40px;
+
+        @include screen(991) {
+            left: 20px;
+        }
+        @include screen(768) {
+            left: 10px;
+        }
+        @include screen(568) {
+            left: 0;
+        }
+    }
+
+    &.right {
+        right: 40px;
+
+        @include screen(991) {
+            right: 20px;
+        }
+        @include screen(768) {
+            right: 10px;
+        }
+        @include screen(568) {
+            right: 0;
+        }
+    }
+
+    .icon {
+        stroke: $color4;
+    }
+
+    &.disabled {
+        display: none;
+    }
+}

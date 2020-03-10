@@ -1,0 +1,22 @@
+.header {
+
+    $header-height: 144px;
+
+    @extend %outer;
+    
+    height: $header-height;
+    background-color: $bg-color;
+
+    &__wrapper {
+        @include flex(col, sb, s);
+        @extend %wrapper;
+        height: 100%;
+    }
+
+    &__logo {
+
+        background-position: center;
+        background-size: contain;
+    }
+
+}

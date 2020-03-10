@@ -1,0 +1,11 @@
+.nav-mobile {
+
+    @extend %outer;
+    position: relative;
+
+    &.hidden {
+        display: none;
+    }
+    
+
+}

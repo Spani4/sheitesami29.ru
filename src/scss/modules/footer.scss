@@ -1,0 +1,10 @@
+.footer {
+
+    @extend %outer;
+
+    &__wrapper {
+        @extend %wrapper;
+    }
+
+
+}

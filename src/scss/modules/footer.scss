@@ -1,10 +1,55 @@
 .footer {
 
     @extend %outer;
+    
+    font-family: $sans-serif;
+    background-color: $bg-color-dark;
+    color: $font-color-light;
 
     &__wrapper {
         @extend %wrapper;
+
+        padding: 30px 0;
     }
 
+    &__content {
+
+        @include flex(row, sb);
+        margin-bottom: 20px;
+
+    }
+
+    &__column {
+        width: 20%;
+    }
+
+    &__title {
+
+        margin-bottom: 18px;
+        font-size: 24px;
+        font-family: $serif;
+        text-transform: uppercase;
+    }
+
+    &__item {
+
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    .link-social {
+
+        margin-top: 20px;
+
+
+        .icon {
+            fill: $bg-color;
+        }
+    }
+
+    &__copyright {
+        font-size: 18px;
+        text-align: center;
+    }
 
 }

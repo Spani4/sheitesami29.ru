@@ -1,4 +1,13 @@
+// CSS
+html {
+    --max-width: 1180px;
+}
+
+
+// SCSS
+
 $max-width: 1180px;
+
 
 //COLORS
 $color1: #f8f4ef;
@@ -35,4 +44,6 @@ $sm: 576px;
 $md: 769px;
 $lg: 992px;
 $xl: 1200px;
+
+
 

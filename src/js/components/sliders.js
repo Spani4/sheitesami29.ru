@@ -15,11 +15,26 @@ export function initMainSlider() {
 
 }
 
-export function initPopularSlider() {
+export function initPopularProductsSlider() {
 
-    const section = document.querySelector('.popular');
+    const section = document.querySelector('.popular-products');
     const swiperContainer = section.querySelector('.swiper-container');
 
     const swiper = new Swiper(swiperContainer, sliderConfig.popular);
 
+}
+
+export function initNewProductsSlider() {
+
+    const section = document.querySelector('.new-products');
+    const swiperContainer = section.querySelector('.swiper-container');
+
+    const swiper = new Swiper(swiperContainer, sliderConfig.new);
+}
+
+export function initMainPageSliders() {
+    
+    initMainSlider();
+    initPopularProductsSlider();
+    initNewProductsSlider();
 }

@@ -1,0 +1,49 @@
+.delivery {
+
+    @extend %outer;
+
+    &__content {
+        @include flex(row,s);
+
+        @include screen(991) {
+            display: block;
+        }
+    }
+
+    &__image {
+        float: left;
+
+        width: 480px;
+        min-width: 480px;
+        height: 235px;
+        margin-right: 20px;
+
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+
+        @include screen(991) {
+            width: 330px;
+            min-width: 330px;
+            height: 165px;
+    
+        }
+    }
+
+    &__text {
+
+        width: auto;
+        height: 100%;
+        font-size: 18px;
+        line-height: 150%;
+
+        a {
+            color: blue;
+            text-decoration: underline;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

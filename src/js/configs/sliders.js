@@ -16,14 +16,31 @@ export default {
         
         loop: true,
         slidesPerView: 3,
-        // spaceBetween: 120,
         lazy: false,
 
         navigation: {
-            nextEl: '.popular .js-next-btn',
-            prevEl: '.popular .js-prev-btn',
-            // disabledClass: 'disabled',
+            nextEl: '.popular-products .js-next-btn',
+            prevEl: '.popular-products .js-prev-btn',
+        },
+        
+        lazy: {
+            loadPrevNext: true,
+        }
+    },
+
+    new: {
+        
+        loop: true,
+        slidesPerView: 3,
+        lazy: false,
+
+        navigation: {
+            nextEl: '.new-products .js-next-btn',
+            prevEl: '.new-products .js-prev-btn',
         },
 
+        lazy: {
+            loadPrevNext: true,
+        }        
     },
 }

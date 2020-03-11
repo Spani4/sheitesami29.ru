@@ -1,0 +1,56 @@
+.button {
+
+    @include transition(box-shadow);
+
+    width: 280px;
+    font-size: 18px;
+    line-height: 60px;
+    text-align: center;
+    border: none;
+    background-color: $color3;
+
+    cursor: pointer;
+
+    &:hover {
+
+        box-shadow: 0px 0px 15px $color3;
+    }
+}
+
+.icon-btn {
+    @extend %centered;
+    
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    
+    .icon {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+.button-round {
+
+    @include transition(box-shadow);
+    @extend %centered;
+
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    border: none;
+
+    background-color: $bg-color;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0px 0px 15px rgba(248, 244, 239, 0.6); 
+    }
+
+    .icon {
+
+        width: 70%;
+        height: 70%;
+    }
+}

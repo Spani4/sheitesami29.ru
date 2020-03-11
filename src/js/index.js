@@ -2,7 +2,7 @@ import "../scss/main.scss";
 
 import LazyLoad from "vanilla-lazyload";
 
-import { initMainSlider, initPopularSlider } from "./components/sliders";
+import { initMainPageSliders } from "./components/sliders";
 
 
 
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         elements_selector: '[data-bg], [data-src]',
     });
 
-    initMainSlider();
-    initPopularSlider();
+    initMainPageSliders();
 });
 

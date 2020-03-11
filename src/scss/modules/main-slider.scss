@@ -20,17 +20,28 @@
     }
 
     &__title {
-
-        max-width: 50%;
         margin-bottom: 20px;
         font-size: 64px;
         font-family: $serif;
         text-transform: uppercase;
+
+        @include screen(991) {
+            font-size: 56px;
+            width: 80%;
+        }
     }
 
     &__text {
-        max-width: 50%;
         font-size: 18px;
+    }
+
+    &__text,
+    &__title {
+
+        width: 60%;
+        @include screen(991) {
+            width: 70%;
+        }
     }
 
     &__social {
@@ -48,7 +59,9 @@
     &__image {
         
         position: absolute;
-        width: 70%;
+        // width: 65%;
+        // width: 70vw;
+        width: calc( (100vw - var(--max-width))/ 2 + (var(--max-width))*0.7);
         height: 100%;
         right: 0;
         bottom: 0;
@@ -56,6 +69,10 @@
         background-position: left center;
         background-size: cover;
         background-repeat: no-repeat;
+
+        @include screen(991) {
+            width: 65%;
+        }
 
         &-overlay {
 
@@ -79,6 +96,10 @@
         bottom: 0;
 
         z-index: 2;
+
+        .button {
+            line-height: 80px;
+        }
     }
 
     &__controls {

@@ -2,17 +2,17 @@
     @include transition(opacity);
 
     position: absolute;
-    width: 70px;
-    height: 120px;
+    width: 80px;
+    height: 50px;
     padding: 10px;
-    z-index: 1;
+    z-index: 10;
 
     &:hover {
         opacity: .6;
     }
 
     &.left {
-        left: 40px;
+        left: -50px;
 
         @include screen(991) {
             left: 20px;
@@ -26,7 +26,7 @@
     }
 
     &.right {
-        right: 40px;
+        right: -50px;
 
         @include screen(991) {
             right: 20px;

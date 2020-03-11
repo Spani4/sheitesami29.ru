@@ -4,4 +4,9 @@
 
     @extend %outer;
 
+    display: none;
+
+    @include screen(768) {
+        display: block;
+    }
 }

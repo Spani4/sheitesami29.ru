@@ -9,14 +9,52 @@
 
     &__wrapper {
         @include flex(col, sb, s);
-        @extend %wrapper;
+        
         height: 100%;
     }
 
-    &__logo {
+    &__top {
+        @include flex(row, sb, c);
 
+        height: 100px;
+    }
+
+    &__logo {
+        width: 70px;
+        height: 65px;
         background-position: center;
         background-size: contain;
+    }
+
+
+    &__icons {
+
+        @include flex(row, fe, c);
+        
+        
+        
+        &-item {
+            @include transition(opacity);
+
+            margin-left: 20px;
+
+            &:hover .icon {
+                // stroke: $bg-color;
+                fill: $color4;
+            }
+        }
+
+        .icon-btn {
+            width: 30px;
+            height: 30px;
+        }
+        
+        .icon {
+            @include transition(all);
+            
+            stroke: $color4;
+            fill: transparent;
+        }
     }
 
 }

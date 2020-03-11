@@ -2,3 +2,8 @@ extends ../layout/layout.pug
 
 block content
     main.main
+        .main__logo-wrapper.wrapper
+            .main__logo(style=`background-image:url("${require('../../images/logo.svg')}")`)
+
+        include ../modules/main-slider.pug
+        include ../modules/popular.pug

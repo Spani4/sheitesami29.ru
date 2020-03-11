@@ -6,9 +6,14 @@
 @import "modules/nav-mobile";
 @import "modules/footer";
 
+@import "modules/main-slider";
+@import "modules/popular";
+
+@import "components/wrapper";
 @import "components/section";
 @import "components/link-social";
 @import "components/icon-btn";
+@import "components/button";
 @import "components/slider-btn";
 @import "components/custom-text";
 
@@ -16,4 +21,23 @@
 .main {
     position: relative;
 
+    &__logo-wrapper {
+        position: relative;
+    }
+
+    &__logo {
+
+        position: absolute;
+        width: 240px;
+        height: 220px;
+        left: 0;
+        top: 10px;
+
+        background-position: center;
+        background-size: contain;
+
+        @include screen(1199) {
+            left: 20px;
+        }
+    }
 }

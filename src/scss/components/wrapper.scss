@@ -1,0 +1,9 @@
+.wrapper {
+
+    width: $max-width;
+    margin: 0 auto;
+
+    @include screen(1199) {
+        width: 100%;
+    }
+}

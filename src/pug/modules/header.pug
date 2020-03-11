@@ -1,9 +1,19 @@
 header.header
-    .header__wrapper
-        .header__row
-            .header__logo(style=`background-image:url("${require('../../images/logo.png')}")`)
+    .header__wrapper.wrapper
+        .header__top
+            .header__logo(style=`background-image:url("${require('../../images/logo.svg')}")`)
             .header__icons
-        .header__row
+                a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
+                    svg.icon
+                        use(href="icons/icons.svg#heart")
+                a.header__icons-item.icon-btn(href="#", aria-label="Корзина")
+                    svg.icon
+                        use(href="icons/icons.svg#cart")
+                button.header__icons-item.icon-btn(type="button", aria-label="Поиск")
+                    svg.icon
+                        use(href="icons/icons.svg#search")
+                        
+        .header__nav
             include ./nav.pug
 
 

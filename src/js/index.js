@@ -5,6 +5,12 @@ import LazyLoad from "vanilla-lazyload";
 import { initMainPageSliders } from "./components/sliders";
 
 
+function hideHeaderLogo() {
+    //только для главной
+    const logo = document.querySelector('.js-logo');
+    logo.style.visibility = "hidden";
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -13,5 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     initMainPageSliders();
+    hideHeaderLogo();
 });
 

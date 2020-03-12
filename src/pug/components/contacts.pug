@@ -1,0 +1,34 @@
+section.contacts.section
+    .contacts__wrapper.wrapper
+        .contacts__header.section__header
+            .contacts__title.section__title как нас найти
+        .contacts__content
+            .contacts__info
+                .contacts__item
+                    .contacts__item-title
+                        svg.icon
+                            use(href="icons/icons.svg#map-pin")
+                        span Адрес:
+                    .contacts__item-content Архангельск, ул.&nbsp;Поморская 11, 2&nbsp;этаж
+                .contacts__item
+                    .contacts__item-title
+                        svg.icon
+                            use(href="icons/icons.svg#phone")
+                        span Телефон:
+                    .contacts__item-content 
+                        a.phone(href="tel:+79600085777") +7 (960) 008-57-77
+                        | 
+                        span или
+                        | 
+                        a.phone(href="tel:+78182460704") +7 (8182) 46-07-04
+                .contacts__item
+                    .contacts__item-title
+                        svg.icon
+                            use(href="icons/icons.svg#mail")
+                        span Почта:
+                    a.contacts__item-content(href="mailto:kosms@rambler.ru") kosms@rambler.ru
+
+
+            .contacts__map
+                img.contacts__map-image(data-src=require('../../images/map.jpg'))
+                

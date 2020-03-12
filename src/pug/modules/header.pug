@@ -1,7 +1,7 @@
 header.header
     .header__wrapper.wrapper
         .header__top
-            .header__logo(style=`background-image:url("${require('../../images/logo.svg')}")`)
+            a.header__logo.js-logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
             .header__icons
                 a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
                     svg.icon

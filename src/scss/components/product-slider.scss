@@ -1,7 +1,23 @@
 .product-slider {
+
+    --side-padding: 0;
+
     
     position: relative;
-    padding: 0 20px;
+    padding: 0 var(--side-padding);
+
+    @include screen(1439) {
+        --side-padding: 5%;
+    }
+    @include screen(1199) {
+        --side-padding: 6%;
+    }
+    @include screen(991) {
+        --side-padding: 8%;
+    }
+    @include screen(768) {
+        --side-padding: 0;
+    }
 
     &__btn {
         top: 150px;
@@ -10,6 +26,7 @@
     &__slide,
     .swiper-slide {
         @include flex(col,fs,c);
+        height: 100%;
     }
 
     &__item {

@@ -17,7 +17,6 @@
 @import "components/section";
 @import "components/link-social";
 @import "components/buttons";
-@import "components/slider-btn";
 @import "components/custom-text";
 
 
@@ -37,11 +36,19 @@
         top: 10px;
         z-index: 100;
 
+        background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
 
         @include screen(1199) {
             left: 20px;
+        }
+        @include screen(991) {
+            width: 220px;
+            height: 205px;    
+        }
+        @include screen(768) {
+            display: none;   
         }
     }
 }

@@ -78,20 +78,22 @@
     &__map {
 
         text-align: center;
-
+        
         &-image {
-
+            
             width: 680px;
             height: 320px;
-
-            @include screen(1199) {
-                width: 50vw;
-                height: 25vw;
-            }
+    
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
 
             @include screen(991) {
-                width: 90vw;
-                height: 45vw;
+               margin: 0 auto;
+            }
+            @include screen(768) {
+                width: 100%;
+                margin: 0 auto;
             }
         }
     }

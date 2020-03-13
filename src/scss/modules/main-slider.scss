@@ -10,6 +10,19 @@
 
         position: relative;
         height: 850px;
+
+        @include screen(1199) {
+            height: 750px;
+        }
+        @include screen(991) {
+            height: 600px;
+        }
+        @include screen(768) {
+            height: 430px;
+        }
+        @include screen(585) {
+            height: 330px;
+        }
     }
 
     &__slide-wrapper {
@@ -17,6 +30,19 @@
         height: 100%;
         padding-top: 300px;
         z-index: 1;
+
+        @include screen(1199) {
+            padding-top: 280px;
+        }
+        @include screen(991) {
+            padding-top: 250px;
+        }
+        @include screen(768) {
+            padding-top: 80px;
+        }
+        @include screen(585) {
+            padding-top: 30px;
+        }
     }
 
     &__title {
@@ -25,9 +51,21 @@
         font-family: $serif;
         text-transform: uppercase;
 
+        @include screen(199) {
+            font-size: 60px;
+            width: 80%;
+        }
         @include screen(991) {
             font-size: 56px;
             width: 80%;
+        }
+        @include screen(768) {
+            font-size: 36px;
+            width: 100%;
+        }
+        @include screen(585) {
+            font-size: 24px;
+            width: 100%;
         }
     }
 
@@ -42,6 +80,9 @@
         @include screen(991) {
             width: 70%;
         }
+        @include screen(768) {
+            width: 100%;
+        }
     }
 
     &__social {
@@ -53,6 +94,10 @@
         .icon {
             fill: $bg-color-dark;
             stroke: $bg-color;
+        }
+
+        @include screen(768) {
+            display: none;
         }
     }
 
@@ -72,6 +117,9 @@
 
         @include screen(991) {
             width: 65%;
+        }
+        @include screen(768) {
+            width: 100%;
         }
 
         &-overlay {
@@ -99,7 +147,20 @@
 
         .button {
             line-height: 80px;
+            
+            @include screen(585) {
+                width: 200px;
+            }
         }
+
+        @include screen(991) {
+            height: 60px;
+
+            .button {
+                line-height: 60px;
+            }
+        }
+
     }
 
     &__controls {
@@ -110,6 +171,15 @@
         height: 100%;
         color: $font-color-light;
         background-color: $bg-color-dark;
+
+        @include screen(585) {
+            width: 120px;
+
+            &-btn.button {
+                width: 20px;
+            }
+        }
+
 
         &-btn {
 

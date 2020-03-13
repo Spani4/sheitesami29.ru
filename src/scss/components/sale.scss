@@ -6,23 +6,47 @@
 
     &__wrapper {
 
-        @include flex(row,sb);
+        @include flex(row);
 
         position: relative;
         width: 1040px;
-        height: 324px;
+        height: 340px;
         margin: 0 auto;
         padding: 20px 0 30px;
+        
+        @include screen(1199) {
+            width: 100%;
+        }
+        @include screen(991) {
+            height: 300px;
+        }
+        @include screen(768) {
+            height: auto;
+        }
     }
 
     &__content {
 
         @include flex(col,s);
+        min-width: 40%;
+        max-width: 70%;
         height: 100%;
+        margin-right: 10%;
+
+        @include screen(768) {
+            align-items: center;
+            max-width: initial;
+            min-width: auto;
+            margin: 0 auto;
+        }
     }
 
-    &__title {
-        text-transform: uppercase;
+    &__title.section__title {
+        text-align: left;
+        
+        @include screen(768) {
+            text-align: center;
+        }
     }
 
     &__title,
@@ -30,6 +54,19 @@
         margin-bottom: 30px;
         font-size: 42px;
         font-family: $serif;
+    }
+
+    &__price {
+
+        @include screen(1199) {
+            font-size: 38px;
+        }
+        @include screen(991) {
+            font-size: 30px;
+        }
+        @include screen(768) {
+            font-size: 24px;
+        }        
     }
 
     &__text {
@@ -40,10 +77,30 @@
     }
     
     &__image {
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        right: 10%;
+        top: -55px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
 
-        width: 634px;
-        height: 424px;
-        margin-top: -70px;
-        margin-right: -50px;
+        @include screen(991) {
+            width: 380px;
+            height: 380px;
+            right: 5%;
+            top: -40px;
+        }
+        @include screen(899) {
+            right: 0;
+        }
+        @include screen(768) {
+            position: static;
+        }
+        @include screen(480) {
+            width: 280px;
+            height: 280px;
+        }
     }
 }

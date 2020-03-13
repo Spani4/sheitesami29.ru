@@ -2,9 +2,16 @@
 
     margin: 0 -10px;
     padding: 10px 0 20px;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     text-transform: uppercase;
+
+    @include screen(1220) {
+        margin: 0;
+    }
+    @include screen(1199) {
+        margin: 0 -10px;
+    }
     
     &__list {
         @include flex(row, sb);
@@ -14,6 +21,12 @@
         @include transition(all);
 
         padding: 5px 10px;
+        font-size: 18px;
+
+        @include screen(1199) {
+            padding: 5px 6px;
+            font-size: 16px;
+        }
 
         &:hover {
             background-color: $color2;

@@ -15,7 +15,7 @@ export default {
     popular: {
         
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 1,
         lazy: false,
 
         navigation: {
@@ -25,13 +25,18 @@ export default {
         
         lazy: {
             loadPrevNext: true,
+        },
+
+        breakpoints: {
+            600: { slidesPerView: 2 },
+            992: { slidesPerView: 3 }
         }
     },
 
     new: {
         
         loop: true,
-        slidesPerView: 3,
+        slidesPerView: 1,
         lazy: false,
 
         navigation: {
@@ -41,6 +46,11 @@ export default {
 
         lazy: {
             loadPrevNext: true,
+        },
+        
+        breakpoints: {
+            600: { slidesPerView: 2 },
+            992: { slidesPerView: 3 }
         }        
     },
 }

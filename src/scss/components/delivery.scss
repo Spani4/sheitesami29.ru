@@ -26,7 +26,10 @@
             width: 330px;
             min-width: 330px;
             height: 165px;
-    
+        }
+
+        @include screen(768) {
+            display: none;
         }
     }
 

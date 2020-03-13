@@ -3,7 +3,13 @@
     @extend %outer;
     @include flex(row,s);
 
-    height: 330px;
+    height: fit-content;
+    min-height: 330px;
+
+    @include screen(991) {
+
+        min-height: auto;
+    }
 
     &__image {
         min-width: 480px;
@@ -14,6 +20,18 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+
+        @include screen(1199) {
+            min-width: 40%;
+            width: 40%;
+        }
+
+        @include screen(991) {
+
+            &.place-main {
+                display: none;
+            }
+        }
     }
 
     &__content {
@@ -29,6 +47,7 @@
 
     &__text {
         flex-grow: 1;
+        margin-bottom: 20px;
         font-size: 18px;
         line-height: 150%;
     }

@@ -54,3 +54,43 @@
         height: 70%;
     }
 }
+
+.slider-btn {
+
+    --side-offset: -5%;
+
+   @include transition(opacity);
+
+   position: absolute;
+   width: 80px;
+   height: 50px;
+   padding: 10px;
+   z-index: 10;
+
+   &:hover {
+       opacity: .6;
+   }
+
+   @include screen(1439) {
+       --side-offset: 0;
+   }
+   @include screen(768) {
+       display: none;
+   }
+
+   &.left {
+       left: var(--side-offset);
+   }
+   
+   &.right {
+       right: var(--side-offset);
+   }
+
+   .icon {
+       stroke: $color4;
+   }
+
+   &.disabled {
+       display: none;
+   }
+}

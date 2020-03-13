@@ -1,12 +1,101 @@
 .header-mobile {
 
-    $height: 60px;
+    $height: 100px;
 
     @extend %outer;
 
     display: none;
+    height: $height;
+    background-color: $bg-color;
 
-    @include screen(768) {
+    @include screen(991) {
         display: block;
+    }
+
+    &__wrapper {
+        @include flex(row,sb,c);
+
+        height: 100%;
+    }
+
+    &__section {
+        @include flex(row,fs,c);
+
+        &:first-child > * {
+            margin-right: 25px;
+        }
+        &:last-child > * {
+            margin-left: 25px;
+        }
+    }
+
+    &__burger {
+
+        @include flex(col,sb,s);
+        width: 34px;
+        height: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &:hover &-elem {
+            box-shadow: 0 0 4px $color4;
+        }
+
+        &-elem {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: $color4;
+
+            transition: all .2s;
+
+            &-elem:nth-child(1) {
+                transform-origin: left center;
+            }
+            &-elem:nth-child(2) {
+                transform-origin: center;
+            }
+            &-elem:nth-child(3) {
+                transform-origin: left center;
+            }
+        }
+
+        &.cross .header-mobile__burger-elem:nth-child(1) {
+            top: 11px;
+            transform: rotateZ(45deg);
+        }
+        &.cross .header-mobile__burger-elem:nth-child(2) {
+            width: 0;
+        }
+        &.cross .header-mobile__burger-elem:nth-child(3) {
+            top: -11px;
+            transform: rotateZ(-45deg);
+        }
+    }
+
+    &__logo {
+        display: none;
+        width: 70px;
+        height: 65px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @include screen(768) {
+            display: block;
+        }
+    }
+
+    .icon {
+        @include transition(fill);
+    }
+
+    .icon-btn {
+        width: 30px;
+        height: 30px;
+
+        &:hover .icon {
+            fill: $color4;
+        }
     }
 }

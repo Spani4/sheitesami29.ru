@@ -1,17 +1,24 @@
 header.header
     .header__wrapper.wrapper
         .header__top
-            a.header__logo.js-logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
-            .header__icons
-                a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
-                    svg.icon
-                        use(href="icons/icons.svg#heart")
-                a.header__icons-item.icon-btn(href="#", aria-label="Корзина")
-                    svg.icon
-                        use(href="icons/icons.svg#cart")
-                button.header__icons-item.icon-btn(type="button", aria-label="Поиск")
-                    svg.icon
-                        use(href="icons/icons.svg#search")
+            .header__left
+                a.header__logo.js-logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
+            
+            .header__right
+                .header__lang 
+                    b RU
+                    | 
+                    span / EN
+                .header__icons
+                    a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
+                        svg.icon
+                            use(href="icons/icons.svg#heart")
+                    a.header__icons-item.icon-btn(href="#", aria-label="Корзина")
+                        svg.icon
+                            use(href="icons/icons.svg#cart")
+                    button.header__icons-item.icon-btn(type="button", aria-label="Поиск")
+                        svg.icon
+                            use(href="icons/icons.svg#search")
                         
         .header__nav
             include ./nav.pug

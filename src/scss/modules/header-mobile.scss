@@ -4,6 +4,7 @@
 
     @extend %outer;
 
+    position: relative;
     display: none;
     height: $height;
     background-color: $bg-color;
@@ -96,6 +97,21 @@
 
         &:hover .icon {
             fill: $color4;
+        }
+    }
+
+    &__dropdown {
+
+        position: absolute;
+        display: none;
+        width: 100%;
+        left: 0;
+        z-index: 1000;
+
+        background-color: $bg-color;
+
+        &.active {
+            display: block;
         }
     }
 }

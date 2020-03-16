@@ -23,6 +23,11 @@
         height: 100px;
     }
 
+    &__right {
+        @include flex(row,c,c);
+        height: 100%;
+    }
+
     &__logo {
         width: 70px;
         height: 65px;

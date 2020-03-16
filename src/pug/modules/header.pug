@@ -5,10 +5,16 @@ header.header
                 a.header__logo.js-logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
             
             .header__right
-                .header__lang 
-                    b RU
-                    | 
-                    span / EN
+                .lang-switcher
+                    button.lang-switcher__btn(
+                        type='button', 
+                        onclick='doGTranslate("ru|ru"); return false;'
+                    ).lang-switcher__item#ru RU
+                    span.lang-switcher__separator /
+                    button.lang-switcher__btn(
+                        type='button', 
+                        onclick='doGTranslate("ru|en"); return false;'
+                        ).lang-switcher__item#en EN
                 .header__icons
                     a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
                         svg.icon

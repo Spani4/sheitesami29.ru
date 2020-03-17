@@ -5,7 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer         = require('autoprefixer');
 const ManifestPlugin       = require('webpack-manifest-plugin');
 const AssetsPlugin         = require('assets-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 const common               = require('./webpack.common.js');
 
 const PUBLIC_PATH = path.join(__dirname, '..', 'public', 'assets');
@@ -34,11 +33,7 @@ module.exports = merge(common, {
 
     },
     plugins: [
-        new CompressionPlugin({
-            filename: '[path].gz[query]',
-            algorithm: 'gzip',
-            test: /\.(js|css|svg)$/,
-        }),
+
         new Webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
         }),

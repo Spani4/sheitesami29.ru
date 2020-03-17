@@ -9,17 +9,25 @@ body {
     @include flex(col);
     position: relative;
     min-height: 100vh;
+    top: 0 !important;
     color: $main-font-color;
-    // overflow-x: hidden;
+
 }
 
 main {
     flex-grow: 1;
     background-color: $bg-color;
-
+    
+    @include screen(991) {
+        padding-top: var(--header-mobile-height);
+    }
 }
 
 .icon {
     fill: transparent;
     stroke: $main-font-color;
+}
+
+.skiptranslate {
+    display: none !important;
 }

@@ -92,8 +92,8 @@
         bottom: 0;
 
         .icon {
-            fill: $bg-color-dark;
-            stroke: $bg-color;
+            fill: $main-font-color;
+            stroke: transparent;
         }
 
         @include screen(768) {

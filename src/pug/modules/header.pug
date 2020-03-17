@@ -6,15 +6,15 @@ header.header
             
             .header__right
                 .lang-switcher
-                    button.lang-switcher__btn(
+                    button.lang-switcher__btn.lang-switcher__item#ru(
                         type='button', 
                         onclick='doGTranslate("ru|ru"); return false;'
-                    ).lang-switcher__item#ru RU
+                    ) RU
                     span.lang-switcher__separator /
-                    button.lang-switcher__btn(
+                    button.lang-switcher__btn.lang-switcher__item#en(
                         type='button', 
                         onclick='doGTranslate("ru|en"); return false;'
-                        ).lang-switcher__item#en EN
+                        ) EN
                 .header__icons
                     a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
                         svg.icon
@@ -26,7 +26,7 @@ header.header
                         svg.icon
                             use(href="icons/icons.svg#search")
                         
-        .header__nav
+        .header__nav.js-drop-nav
             include ./nav.pug
 
 

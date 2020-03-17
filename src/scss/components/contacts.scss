@@ -39,6 +39,10 @@
             width: 50%;
             text-align: center;
         }
+        @include screen(480) {
+            width: 100%;
+            // text-align: center;
+        }
 
         &-title {
             @include flex(row,fs,c);
@@ -51,6 +55,9 @@
             }
             @include screen(585) {
                 font-size: 18px;
+            }
+            @include screen(480) {
+                margin-left: -40px;
             }
         }
 

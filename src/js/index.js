@@ -3,6 +3,7 @@ import "../scss/main.scss";
 import LazyLoad from "vanilla-lazyload";
 
 import { initMainPageSliders } from "./components/sliders";
+import initGlobalScripts from "./global";
 
 
 function hideHeaderLogo() {
@@ -18,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         elements_selector: '[data-bg], [data-src]',
     });
 
-    initMainPageSliders();
     hideHeaderLogo();
+    initGlobalScripts();
+    initMainPageSliders();
 });
 

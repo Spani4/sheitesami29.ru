@@ -1,8 +1,8 @@
-header.header-mobile
+header.header-mobile.js-header-mobile
     .header-mobile__wrapper
 
         .header-mobile__section
-            .header-mobile__burger
+            .header-mobile__burger.js-burger
                 .header-mobile__burger-elem
                 .header-mobile__burger-elem
                 .header-mobile__burger-elem
@@ -21,5 +21,14 @@ header.header-mobile
                 svg.icon
                     use(href="icons/icons.svg#cart")
 
-    //- .header-mobile__dropdown.active
+    .header-mobile__dropdown.js-drop-nav
         include ./nav-mobile.pug
+        .header-mobile__social
+            a.main-slider__social-link.link-social(href="vk.com", aria-label="vkontakte") 
+                svg.icon
+                    use(href="icons/icons.svg#vk")
+            a.main-slider__social-link.link-social(href="instagram.com", aria-label="instagram") 
+                svg.icon
+                    use(href="icons/icons.svg#instagram")
+
+

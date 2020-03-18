@@ -23,6 +23,10 @@
         top: 150px;
     }
 
+    &__wrapper.swiper-wrapper {
+        padding-top: 5px;
+    }
+
     &__slide,
     .swiper-slide {
         @include flex(col,fs,c);
@@ -60,6 +64,8 @@
             height: 350px;
             margin-bottom: 30px;
     
+            box-shadow: 0px 0px 5px rgba(83, 81, 61, 0.4);
+            background-color: #fff;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;

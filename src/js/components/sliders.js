@@ -32,6 +32,14 @@ export function initNewProductsSlider() {
     const swiper = new Swiper(swiperContainer, sliderConfig.new);
 }
 
+export function initNewProductCardSlider() {
+
+    const section = document.querySelector('.product-card__slider-section');
+    const swiperContainer = section.querySelector('.swiper-container');
+
+    const swiper = new Swiper(swiperContainer, sliderConfig.productCard);
+}
+
 export function initMainPageSliders() {
     
     initMainSlider();

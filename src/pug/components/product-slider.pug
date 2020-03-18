@@ -63,4 +63,22 @@
                     a.product-slider__item-title(href="#") пуговицы "мини"
                     .product-slider__item-price 5&nbsp;&#x20bd;/шт
 
+            .product-slider__slide.swiper-slide
+                .product-slider__item
+                    //- button.product-slider__item-like.icon-btn(type="button", aria-label="В избранное")
+                        svg.icon
+                            use(href="icons/icons.svg#heart")
+                    .product-slider__item-image.swiper-lazy(data-background=require('../../images/product.jpg')) 
+                        .product-slider__item-hover
+                            a.product-slider__item-hover-btn.button(href="#") Подробнее
+                            .product-slider__item-hover-options
+                                button.button-round(type="button", aria-label="Нравится")
+                                    svg.icon
+                                        use(href="icons/icons.svg#heart")                                
+                                button.button-round(type="button", aria-label="В корзину")
+                                    svg.icon
+                                        use(href="icons/icons.svg#cart")                                
+                    a.product-slider__item-title(href="#") пуговицы "мини"
+                    .product-slider__item-price 5&nbsp;&#x20bd;/шт
+
 

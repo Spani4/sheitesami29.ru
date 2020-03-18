@@ -16,7 +16,7 @@ export default {
         
         loop: true,
         slidesPerView: 1,
-        lazy: false,
+        // lazy: false,
 
         navigation: {
             nextEl: '.popular-products .js-next-btn',
@@ -37,7 +37,7 @@ export default {
         
         loop: true,
         slidesPerView: 1,
-        lazy: false,
+        // lazy: false,
 
         navigation: {
             nextEl: '.new-products .js-next-btn',
@@ -53,4 +53,20 @@ export default {
             992: { slidesPerView: 3 }
         }        
     },
+
+    productCard: {
+        slidesPerView: 4,
+
+        // lazy: false,
+
+        breakpoints: {
+            600: { slidesPerView: 2 },
+            992: { slidesPerView: 3 },
+            1200: { slidesPerView: 4 }
+        },
+
+        lazy: {
+            loadPrevNext: true,
+        },
+    }
 }

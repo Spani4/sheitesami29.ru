@@ -12,7 +12,7 @@ function initTabs() {
             if ( tab.classList.contains('active') ) return;
 
             rollUp();
-            
+
             tabs.forEach((tab, j) => {
                 j == i ? tab.classList.add('active') : tab.classList.remove('active');
             });
@@ -29,6 +29,7 @@ function initUnroll() {
     const rollBtns = productCard.querySelectorAll('.js-roll-btn');
 
     rollBtns.forEach( btn => {
+
         btn.addEventListener('click', () => {
             rollToggle();
         });

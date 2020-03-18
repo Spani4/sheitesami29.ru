@@ -16,6 +16,7 @@
 .product-card {
 
     $image-height-desktop: 516px;
+    $image-height-tablet: 516px * 0.75;
 
     @extend %outer;
 
@@ -28,19 +29,41 @@
     &__content {
         @include flex(row,sb);
         position: relative;
+
+        @include screen(768) {
+            @include flex(col);
+        }
     }
 
     &__col {
 
         &-image {
             width: 400px;
-            box-shadow: 0px 0px 10px rgba(83, 81, 61, 0.4);
 
+            @include screen(991) {
+                width: 300px;
+            }
+            @include screen(768) {
+                width: 400px;
+                max-width: 100%;
+                margin: 0 auto 20px;
+            }
         }
 
         &-info {
             @include flex(col,s,s);
             width: calc( 100% - 400px - 80px );
+
+            @include screen(1199) {
+                width: calc( 100% - 400px - 40px );
+
+            }
+            @include screen(991) {
+                width: calc( 100% - 300px - 20px );
+            }
+            @include screen(768) {
+                width: 100%;
+            }
         }
     }
 
@@ -53,17 +76,29 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
+
+        @include screen(991) {
+            height: $image-height-tablet;
+        }
     }
 
     &__info {
 
         @include flex(col,sb);
         height: $image-height-desktop;
+        
+        @include screen(991) {
+            height: $image-height-tablet;
+        }
 
         &-top {
             @include flex(row,fs,fe);
             position: relative;
             margin-bottom: 20px;
+
+            @include screen(768) {
+                @include flex(col);
+            }
         }
 
         &-main {
@@ -73,12 +108,43 @@
         &-bottom {
             @include flex(row,fs,c);
         }
+
+        &.unrolled {
+            height: auto;
+
+            .product-card__tabs-content-item {
+                margin-bottom: 20px;
+            }
+            .product-card__tabs-content-item,
+            .product-card__tabs-content-inner {
+                height: auto;
+
+                &::after {
+                    display: none;
+                }
+            }
+
+            .product-card__tabs-unroll-btn::after {
+                transform: scaleY(-1);
+                top: 10%;
+            }
+        }
     }
 
     &__price {
         padding-right: 10px;
         font-size: 42px;
         font-family: $serif;
+
+        @include screen(991) {
+            font-size: 38px;
+        }
+        @include screen(768) {
+            font-size: 34px;
+        }
+        @include screen(480) {
+            font-size: 24px;
+        }
     }
 
     &__availability {
@@ -89,24 +155,39 @@
 
     &__brand-logo {
         position: absolute;
+        max-width: 30%;
         right: 0;
         top: 0;
+
+        @include screen(768) {
+            top: 30%;
+        }
     }
 
     &__tabs {
-        box-sizing: content-box;
-
         font-size: 18px;
 
+        
         &-controls {
+            position: relative;
             display: inline-flex;
             margin-bottom: 20px;
 
-            border-bottom: 3px solid $color2;
+            &::after {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                left: 0;
+                bottom: 0;
+                border-radius: 3px;
+                background-color: $color2;
+            }
         }
 
         &-btn {
-            box-sizing: content-box;
+            position: relative;
+            padding-bottom: 3px;
             
             cursor: pointer;
             
@@ -116,35 +197,88 @@
 
             &.active {
                 font-weight: 500;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 3px;
+                    left: 0;
+                    bottom: 0;
+                    z-index: 1;
+                    border-radius: 3px;
+                    background-color: $color3;
+                }
+            }
+        }
+
+        &-content-inner {
+            height: 300px;
+            overflow: hidden;
+
+            @include screen(991) {
+                height: 180px;
+                font-size: 16px;
+            }
+            @include screen(480) {
+                font-size: 14px;
             }
         }
 
         &-content-item {
             position: relative;
-            max-height: 360px;
+            height: 330px;
             line-height: 150%;
+
+            @include screen(991) {
+                height: 210px;
+            }
 
             &:not(.active) {
                 display: none;
             }
-        }
-        
-        &-unroll-btn {
-            font-size: 14px;
-            color: $font-color-light;
 
             &::after {
                 content: "";
                 position: absolute;
-                right: -10px;
-                top: 5px;
-                border-width: 5px;
-                border-color: $font-color-light transparent transparent transparent;
+                width: 100%;
+                height: 40px;
+                bottom: 30px; //330-300
+                background-image: linear-gradient(to bottom, transparent 20%, $bg-color);
+            }
+        }
+        
+        &-unroll {
+
+            text-align: right;
+
+            &-btn {
+                @include transition(opacity);
+
+                position: relative;
+                padding-right: 15px;
+                z-index: 2;
+                font-size: 14px;
+                line-height: 14px;
+                opacity: .5;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: .9;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    right: 0;
+                    top: 45%;
+                    border-style: solid;
+                    border-width: 5px;
+                    border-color: $main-font-color transparent transparent transparent;
+                }
             }
         }
     }
-
-
 
     &__props {
 
@@ -160,7 +294,6 @@
         }
     }
 
-
     &__cart-button {
         margin-right: 20px;
     }
@@ -170,7 +303,7 @@
         height: 30px;
 
         .icon {
-            transition: all .1s;
+            transition: all .2s;
         }
 
         &:hover {

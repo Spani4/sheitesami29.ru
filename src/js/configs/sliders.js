@@ -55,9 +55,7 @@ export default {
     },
 
     productCard: {
-        slidesPerView: 4,
-
-        // lazy: false,
+        slidesPerView: 1,
 
         breakpoints: {
             600: { slidesPerView: 2 },

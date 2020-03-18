@@ -4,6 +4,7 @@ import LazyLoad from "vanilla-lazyload";
 
 import initGlobalScripts from "./global";
 import { initNewProductCardSlider } from "./components/sliders";
+import initProducrCard from "./components/initProductCard";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,4 +15,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGlobalScripts();
     initNewProductCardSlider();
+    initProducrCard();
 });

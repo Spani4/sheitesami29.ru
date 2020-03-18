@@ -1,68 +1,69 @@
 extends ../layout/layout.pug
 
 block content
-    main.asdf
-        .asdf__wrapper.wrapper
-            h1.asdf__title.page-title ШВЕЙНАЯ МАШИНКА JANOME 517
+    main.product-card
+        .product-card__wrapper.wrapper
+            h1.product-card__title.page-title ШВЕЙНАЯ МАШИНКА JANOME 517
 
-            .asdf__content
-                .asdf__col-image
-                    .asdf__product-image(data-bg=`url(${require('../../images/machine.png')})`)
+            .product-card__content
+                .product-card__col-image
+                    .product-card__product-image(data-bg=`url(${require('../../images/machine.png')})`)
 
-                .asdf__col-info.asdf__info
-                    .asdf__info-top
-                        .asdf__price 9100&nbsp;&#x20bd;
-                        .asdf__availability в наличии
-                        img.asdf__brand-logo(data-src=require('../../images/janome.png'))
+                .product-card__col-info.product-card__info
+                    .product-card__info-top
+                        .product-card__price 9100&nbsp;&#x20bd;
+                        .product-card__availability в наличии
+                        img.product-card__brand-logo(data-src=require('../../images/janome.png'))
 
-                    .asdf__info-main
-                        .asdf__tabs
-                            .asdf__tabs-controls
-                                .asdf__tabs-btn.active Описание
-                                .asdf__tabs-btn Характеристики
-                            .asdf__tabs-contents
-                                .asdf__tabs-content-item
-                                    .asdf__description Швейная машина Janome Juno 517 — это удобная и компактная электромеханическая швейная машинка, которую по достоинству оценят любительницы шить. Множество функций, предусмотренных в этой модели, облегчат процесс работы. С помощью этой швейной машинки можно выполнять различные виды строчек. Вы сможете работать с различными по плотности типами ткани (от шелка до кожи). Отличающаяся стильным, эффектным дизайном, швейная машина Janome Juno 517 имеет простую и надежную электромеханическую конструкцию, вертикальный челнок, базовую рабочую платформу с разъемным типом станины и рукавной free-arm вставкой.
-                                .asdf__tabs-content-item.active
-                                    .asdf__props
-                                        .asdf__props-item
-                                            .asdf__props-name Тип
-                                            .asdf__props-dots
-                                            .asdf__props-value электромеханическая
-                                        .asdf__props-item
-                                            .asdf__props-name Операции
-                                            .asdf__props-dots
-                                            .asdf__props-value 12
-                                        .asdf__props-item
-                                            .asdf__props-name Петля
-                                            .asdf__props-dots
-                                            .asdf__props-value Полуавтомат
-                                        .asdf__props-item
-                                            .asdf__props-name Тип
-                                            .asdf__props-dots
-                                            .asdf__props-value электромеханическая
-                                        .asdf__props-item
-                                            .asdf__props-name Операции
-                                            .asdf__props-dots
-                                            .asdf__props-value 12
-                                        .asdf__props-item
-                                            .asdf__props-name Петля
-                                            .asdf__props-dots
-                                            .asdf__props-value Полуавтомат
-                                        .asdf__props-item
-                                            .asdf__props-name Петля
-                                            .asdf__props-dots
-                                            .asdf__props-value Полуавтомат
-                                    //- .asdf__tabs-unroll-btn Все характеристики
+                    .product-card__info-main
+                        .product-card__tabs
+                            .product-card__tabs-controls
+                                .product-card__tabs-btn.active Описание
+                                .product-card__tabs-btn Характеристики
+                            .product-card__tabs-contents
+                                .product-card__tabs-content-item
+                                    .product-card__description Швейная машина Janome Juno 517 — это удобная и компактная электромеханическая швейная машинка, которую по достоинству оценят любительницы шить. Множество функций, предусмотренных в этой модели, облегчат процесс работы. С помощью этой швейной машинки можно выполнять различные виды строчек. Вы сможете работать с различными по плотности типами ткани (от шелка до кожи). Отличающаяся стильным, эффектным дизайном, швейная машина Janome Juno 517 имеет простую и надежную электромеханическую конструкцию, вертикальный челнок, базовую рабочую платформу с разъемным типом станины и рукавной free-arm вставкой.
+                                .product-card__tabs-content-item.active
+                                    .product-card__props
+                                        .product-card__props-item
+                                            .product-card__props-name Тип
+                                            .product-card__props-dots
+                                            .product-card__props-value электромеханическая
+                                        .product-card__props-item
+                                            .product-card__props-name Операции
+                                            .product-card__props-dots
+                                            .product-card__props-value 12
+                                        .product-card__props-item
+                                            .product-card__props-name Петля
+                                            .product-card__props-dots
+                                            .product-card__props-value Полуавтомат
+                                        .product-card__props-item
+                                            .product-card__props-name Тип
+                                            .product-card__props-dots
+                                            .product-card__props-value электромеханическая
+                                        .product-card__props-item
+                                            .product-card__props-name Операции
+                                            .product-card__props-dots
+                                            .product-card__props-value 12
+                                        .product-card__props-item
+                                            .product-card__props-name Петля
+                                            .product-card__props-dots
+                                            .product-card__props-value Полуавтомат
+                                        .product-card__props-item
+                                            .product-card__props-name Петля
+                                            .product-card__props-dots
+                                            .product-card__props-value Полуавтомат
+                    
+                    .product-card__tabs-unroll-btn Все характеристики
 
-                    .asdf__info-bottom
-                        button.asdf__cart-button.button(type="button") Добавить в корзину
-                        button.asdf__cart-button.icon-btn(type="button", aria-label="Добавить в избранное")
+                    .product-card__info-bottom
+                        button.product-card__cart-button.button(type="button") Добавить в корзину
+                        button.product-card__cart-button.icon-btn(type="button", aria-label="Добавить в избранное")
                             svg.icon
                                 use(href="icons/icons.svg#heart")     
 
-        section.asdf__slider-section.product-card__slider-section
-            .asdf__slider-section-wrapper.wrapper
-                h2.asdf__title.page-title с тим товаром часто покупают:
+        section.product-card__slider-section.product-card__slider-section
+            .product-card__slider-section-wrapper.wrapper
+                h2.product-card__title.page-title с этим товаром часто покупают:
                 include ../components/product-slider.pug
 

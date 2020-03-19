@@ -30,5 +30,15 @@ header.header-mobile.js-header-mobile
             a.main-slider__social-link.link-social(href="instagram.com", aria-label="instagram") 
                 svg.icon
                     use(href="icons/icons.svg#instagram")
+        .header-mobile__lang-switcher.lang-switcher
+            button.lang-switcher__btn.lang-switcher__item#ru(
+                type='button', 
+                onclick='doGTranslate("ru|ru"); return false;'
+            ) RU
+            span.lang-switcher__separator /
+            button.lang-switcher__btn.lang-switcher__item#en(
+                type='button', 
+                onclick='doGTranslate("ru|en"); return false;'
+            ) EN
 
 

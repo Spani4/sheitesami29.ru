@@ -1,3 +1,5 @@
+@import "../components/lang-switcher";
+
 .header-mobile {
 
     @extend %outer;
@@ -82,7 +84,7 @@
         background-size: contain;
         background-repeat: no-repeat;
 
-        @include screen(768) {
+        @include screen(991) {
             display: block;
         }
     }
@@ -145,7 +147,8 @@
         overflow-y: auto;
     }
 
-    &__social {
+    &__social,
+    &__lang-switcher {
 
         @include flex(row, c);
         margin: 30px 0;
@@ -155,4 +158,26 @@
             stroke: transparent;
         }
     }
+
+    // .lang-switcher__btn {
+    //     position: relative;
+    //     padding: 0 10px;
+    //     font-size: inherit;
+    //     background-color: transparent;
+    //     border-style: none;
+    //     cursor: pointer;
+
+    //     &::after {
+    //         content: "";
+    //         position: absolute;
+    //         left: -5px;
+    //         right: -5px;
+    //         top: -5px;
+    //         bottom: -5px;
+    //     }
+
+    //     &:hover {
+    //         text-shadow: 0 0 1px #000;
+    //     }
+    // }
 }

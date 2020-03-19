@@ -1,3 +1,5 @@
+@import "../components/lang-switcher";
+
 .header {
 
     $header-height: 144px;
@@ -63,17 +65,17 @@
         }
     }
 
-    .lang-switcher__btn {
+    // .lang-switcher__btn {
 
-        padding: 0 10px;
-        font-size: inherit;
-        background-color: transparent;
-        border-style: none;
-        cursor: pointer;
+    //     padding: 0 10px;
+    //     font-size: inherit;
+    //     background-color: transparent;
+    //     border-style: none;
+    //     cursor: pointer;
 
-        &:hover {
-            text-shadow: 0 0 1px #000;
-        }
-    }
+    //     &:hover {
+    //         text-shadow: 0 0 1px #000;
+    //     }
+    // }
 
 }

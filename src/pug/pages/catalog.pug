@@ -1,0 +1,38 @@
+extends ../layout/layout.pug
+
+block content
+    main.catalog
+        .catalog__wrapper.wrapper
+            h1.catalog__title.page-title швейное оборудование
+
+
+            .catalog__content
+
+                aside.catalog__filters
+                    .catalog__filters-title Категория
+                    .catalog__filters-list
+                        .catalog__filters-item.active
+                            .catalog__filters-marker
+                            a.catalog__filters-link(href="#") все
+                        .catalog__filters-item
+                            .catalog__filters-marker
+                            a.catalog__filters-link(href="#") швейные машины
+                        .catalog__filters-item
+                            .catalog__filters-marker
+                            a.catalog__filters-link(href="#") оверлоки
+                        .catalog__filters-item
+                            .catalog__filters-marker
+                            a.catalog__filters-link(href="#") распошивальные машины
+                        .catalog__filters-item
+                            .catalog__filters-marker
+                            a.catalog__filters-link(href="#") лапки для швейных машин
+                        .catalog__filters-item
+                            .catalog__filters-marker
+                            a.catalog__filters-link(href="#") запчасти для швейных машин
+
+                .catalog__products
+                    each item in [1,2,3,4,5,6,7,8,9,10,11,12]
+                        .catalog__products-item
+                            include ../components/product-item.pug
+
+

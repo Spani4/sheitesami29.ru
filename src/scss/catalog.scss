@@ -1,0 +1,86 @@
+@import "globals/global";
+
+@import "modules/header";
+@import "modules/header-mobile";
+@import "modules/nav";
+@import "modules/nav-mobile";
+@import "modules/footer";
+
+@import "components/product-slider";
+@import "components/product-item";
+@import "components/wrapper";
+@import "components/link-social";
+@import "components/buttons";
+@import "components/custom-text";
+@import "components/page-title";
+
+.catalog {
+
+    @extend %outer;
+
+    &__content {
+        @include flex(row,sb);
+
+        @include screen(991) {
+            @include flex(col,c,c);
+        }
+
+    }
+
+    &__filters {
+
+        width: 300px;
+        min-width: 300px;
+        margin-bottom: 40px;
+        font-size: 14px;
+
+        @include screen(991) {
+            align-self: flex-start;
+        }
+
+        &-title {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        &-item {
+            @include flex(row, fs,c);
+
+            margin-bottom: 20px;
+
+            &.active .catalog__filters-marker {
+                background-color: $color3;
+            }
+        }
+
+        &-marker {
+            width: 20px;
+            height: 20px;
+            margin-right: 20px;
+            border: 1px solid $color3;
+            border-radius: 2px;
+        }
+    }
+
+    &__products {
+        @include flex(row, fe, fs, wrap);
+        
+        width: auto;
+
+        &-item {
+            @include flex(col,fs,fe);
+            width: 33.33333%;
+            margin-bottom: 60px;
+
+            @include screen(1199) {
+                width: 50%;
+            }
+            @include screen(991) {
+                align-items: center;
+            }
+            @include screen(768) {
+                width: 100%;
+            }
+        }
+    }
+}

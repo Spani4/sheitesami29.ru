@@ -22,7 +22,7 @@
         @include flex(row,sb);
 
         @include screen(991) {
-            @include flex(col,c,c);
+            @include flex(col,c,s);
         }
 
     }
@@ -36,6 +36,13 @@
 
         @include screen(991) {
             align-self: flex-start;
+            width: auto;
+            min-width: 0;
+            margin-bottom: 30px;
+        }
+
+        @include screen(768) {
+            margin-bottom: 20px;
         }
 
         &-title {
@@ -63,9 +70,9 @@
     }
 
     &__products {
-        @include flex(row, fe, fs, wrap);
+        @include flex(row, fs, fs, wrap);
         
-        width: auto;
+        flex-grow: 1;
 
         &-item {
             @include flex(col,fs,fe);

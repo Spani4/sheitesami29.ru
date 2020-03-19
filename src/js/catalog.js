@@ -8,7 +8,7 @@ import initGlobalScripts from "./global";
 document.addEventListener('DOMContentLoaded', () => {
     
     const lazyLoader = new LazyLoad({
-        elements_selector: '[data-background], [data-bg], [data-src]',
+        elements_selector: '[data-background], [data-src]',
     });
 
     initGlobalScripts();

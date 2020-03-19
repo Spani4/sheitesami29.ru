@@ -4,7 +4,7 @@
             use(href="icons/icons.svg#heart")
     .product-item__image.swiper-lazy(
         data-background=require('../../images/product.jpg')
-        data-bg=require('../../images/product.jpg')
+        data-bg=`url(${require('../../images/product.jpg')})`
     ) 
         .product-item__hover
             a.product-item__hover-btn.button(href="#") Подробнее

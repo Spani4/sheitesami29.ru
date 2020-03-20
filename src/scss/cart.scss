@@ -8,6 +8,9 @@
 
 // @import "components/product-slider";
 // @import "components/product-item";
+@import "components/form-input";
+@import "components/cart-item";
+
 @import "components/wrapper";
 @import "components/link-social";
 @import "components/buttons";
@@ -15,5 +18,95 @@
 @import "components/page-title";
 
 .cart {
+
+    @extend %outer;
     
+    &__details {
+
+        @include flex(row,sb);
+        font-size: 18px;
+
+        @include screen(991) {
+            @include flex(col, fs, s);
+        }
+    }
+
+    &__title {
+        margin-bottom: 30px;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        @include screen(768) {
+            margin-bottom: 20px;
+        }
+    }
+
+    &__form {
+
+        width: 600px;
+
+        @include screen(991) {
+            width: 100%;
+        }
+
+        &-group {
+            margin-bottom: 60px;
+
+            @include screen(991) {
+                margin-bottom: 50px;
+            }
+            @include screen(768) {
+                margin-bottom: 40px;
+            }
+            @include screen(585) {
+                margin-bottom: 30px;
+            }
+        }
+
+        &-row {
+            @include flex();
+            
+            &:not(:last-child) {
+                margin-bottom: 30px;
+            }
+        }
+
+        &-item {
+            @include flex(col,sb,fs);
+            height: 55px;
+            margin-right: 40px;
+
+            @include screen(1199) {
+                margin-right: 30px;
+            }
+        }
+
+        .required::after {
+            content: "*";
+            color: $color3;
+        }
+    }
+
+
+    &__items {
+        flex-grow: 1;
+        margin-left: 40px;
+
+        @include screen(1199) {
+            margin-left: 0px;
+        }
+
+        &-list {
+            max-height: 400px;
+            padding-right: 10px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+
+
+    &__send-btn {
+        display: block;
+        margin: 60px auto;
+    }
 }

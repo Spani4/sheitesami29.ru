@@ -10,12 +10,23 @@ module.exports = merge(common, {
         chunkFilename: 'js/[name].chunk.js'
     },
     devServer  : {
+        https: true,
         port   : 3000,
+        // host: "192.168.0.144",
         inline : true,
         overlay: {
             warnings: true,
             errors  : true
-        }
+        },
+        proxy: [
+            {
+                context: ['/api', '/data'],
+                target: "https://ss.1mcg.ru",
+                changeOrigin: true,
+                withCredentials: true,
+            },
+        ],
+
     },
     plugins    : [
         new Webpack.DefinePlugin({

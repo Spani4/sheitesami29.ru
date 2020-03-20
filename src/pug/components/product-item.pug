@@ -1,7 +1,7 @@
 .product-item
     .product-item__like.icon-btn.js-favorite-label
         svg.icon
-            use(href="icons/icons.svg#heart")
+            use(href="/icons/icons.svg#heart")
     .product-item__image.swiper-lazy(
         data-background=require('../../images/product.jpg')
         data-bg=`url(${require('../../images/product.jpg')})`
@@ -11,9 +11,9 @@
             .product-item__hover-options
                 button.button-round.js-favorite-add(type="button", aria-label="Нравится")
                     svg.icon
-                        use(href="icons/icons.svg#heart")                                
+                        use(href="/icons/icons.svg#heart")                                
                 button.button-round.js-cart-add(type="button", aria-label="В корзину")
                     svg.icon
-                        use(href="icons/icons.svg#cart")                                
+                        use(href="/icons/icons.svg#cart")                                
     a.product-item__title(href="#") пуговицы "мини"
     .product-item__price 5&nbsp;&#x20bd;/шт

@@ -1,0 +1,18 @@
+.form-input {
+
+    width: 280px;
+    height: 22px;
+    border-width: 0 0 2px 0;
+    border-style: solid;
+    border-color: $color3;
+    background-color: transparent;
+
+    &::placeholder {
+        font-size: 18px;
+        opacity: .5;
+    }
+
+    @include screen(1199) {
+        width: 230px;
+    }
+}

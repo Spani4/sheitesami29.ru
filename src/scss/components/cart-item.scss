@@ -1,0 +1,119 @@
+.cart-item {
+
+    $btn-size: 30px;
+
+    @include flex(row);
+
+    position: relative;
+    height: 175px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+
+    &:not(:last-child) {
+        border-bottom: 1px solid rgba(#bab7a4, .5);
+    }
+
+    &__image {
+        min-width: 180px;
+        width: 180px;
+        height: 142px;
+        margin-right: 20px;
+
+        box-shadow: 0px 0px 5px rgba(83, 81, 61, 0.4);
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        @include screen(1199) {
+            min-width: 150px;
+            width: 150px;
+        }
+    }
+
+    &__details {
+        @include flex(col, sb, s);
+        flex-grow: 1;
+    }
+
+    &__title {
+        padding-right: 15px;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+
+    &__count {
+        @include flex();
+        
+        &-control {
+            @include flex();
+            margin-right: 20px;
+        }
+
+        &-btn,
+        &-state {
+            width: $btn-size;
+            height: $btn-size;
+            line-height: $btn-size;
+            text-align: center;
+            border: 1px solid $color3;
+        }
+
+        &-btn {
+            @include transition(all);
+            position: relative;
+            color: $color3;
+            cursor: pointer;
+            user-select: none;
+
+            &::before {
+                content: " ";
+                left: -3px;
+                right: -3px;
+                top: -3px;
+                bottom: -3px;
+            }
+
+            &:hover {
+                color: #fff;
+                background-color: $color3;
+                box-shadow: 0px 0px 10px $color3;
+            }
+
+            &:active {
+                box-shadow: 0px 0px 0 $color3;                
+            }
+        }
+
+        &-state {
+            border-right-width: 0;
+            border-left-width: 0;
+            font-size: 14px;
+        }
+    }
+
+    &__total-price {
+        font-size: 24px;
+    }
+
+    &__remove-btn {
+        @include transition(text-shadow);
+        position: absolute;
+
+        width: 22px;
+        height: 22px;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        font-size: 30px;
+        line-height: 22px;
+        text-align: center;
+        color: black;
+
+        cursor: pointer;
+
+        &:hover {
+            text-shadow: 0 0 2px #000;
+        }
+    }
+}

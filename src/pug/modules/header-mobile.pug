@@ -8,7 +8,7 @@ header.header-mobile.js-header-mobile
                 .header-mobile__burger-elem
             button.header-mobile__icons-item.icon-btn(type="button", aria-label="Поиск")
                 svg.icon
-                    use(href="icons/icons.svg#search")
+                    use(href="/icons/icons.svg#search")
 
         .header-mobile__section
             a.header-mobile__logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
@@ -16,20 +16,20 @@ header.header-mobile.js-header-mobile
         .header-mobile__section
             a.header-mobile__icons-item.icon-btn(href="#", aria-label="Избранное")
                 svg.icon
-                    use(href="icons/icons.svg#heart")
+                    use(href="/icons/icons.svg#heart")
             a.header-mobile__icons-item.icon-btn(href="#", aria-label="Корзина")
                 svg.icon
-                    use(href="icons/icons.svg#cart")
+                    use(href="/icons/icons.svg#cart")
 
     .header-mobile__dropdown.js-drop-nav
         include ./nav-mobile.pug
         .header-mobile__social
             a.main-slider__social-link.link-social(href="vk.com", aria-label="vkontakte") 
                 svg.icon
-                    use(href="icons/icons.svg#vk")
+                    use(href="/icons/icons.svg#vk")
             a.main-slider__social-link.link-social(href="instagram.com", aria-label="instagram") 
                 svg.icon
-                    use(href="icons/icons.svg#instagram")
+                    use(href="/icons/icons.svg#instagram")
         .header-mobile__lang-switcher.lang-switcher
             button.lang-switcher__btn.lang-switcher__item#ru(
                 type='button', 

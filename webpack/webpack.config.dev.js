@@ -12,7 +12,7 @@ module.exports = merge(common, {
     devServer  : {
         https: true,
         port   : 3000,
-        // host: "192.168.0.144",
+        host: "192.168.0.144",
         inline : true,
         overlay: {
             warnings: true,
@@ -24,6 +24,7 @@ module.exports = merge(common, {
                 target: "https://ss.1mcg.ru",
                 changeOrigin: true,
                 withCredentials: true,
+                coockieDomainRewrite: '',
             },
         ],
 

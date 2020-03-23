@@ -18,22 +18,29 @@ function initAddingToCart(productItem) {
             id: productId,
             count: 1
         });
-        
-        fetch(apiCart._links.items.href,{
-            method: 'POST',
-            body
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error;
-            }
-        }).then(result => {
-            return result.json();
-        }).catch(err => {
+
+        try {
+            fetch(apiCart._links.items.href,{
+                method: 'POST',
+                // credentials:'include',
+                body
+            })
+            .then(response => {
+                if ( !response.ok ) {
+                    throw new Error;
+                } else {
+                    console.log(response);
+                    return response.json();
+                }
+            }).then(result => {
+                console.log(result)
+                return result;
+            })
+        } catch(err) {
+            console.log(err);
             notyShow('error', 'Произошла ошибка. Перезагрузите страницу');
-        });
+        }
+        
 
     });
 }
@@ -85,6 +92,8 @@ export default function() {
 
     if ( !productItems.length ) return;
 
+
+    // ЗАХАРДКОДИТЬ ССЫЛКА
     fetch(apiLinkCart).then(response => {
         if (response.ok) {
             return response.json();

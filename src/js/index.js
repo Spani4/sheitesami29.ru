@@ -3,7 +3,6 @@ import "../scss/main.scss";
 import LazyLoad from "vanilla-lazyload";
 
 import { initMainPageSliders } from "./components/sliders";
-import initProductItems from "./components/initProductItems";
 import initGlobalScripts from "./global";
 
 
@@ -23,6 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
     hideHeaderLogo();
     initGlobalScripts();
     initMainPageSliders();
-    initProductItems();
 });
 

@@ -1,6 +1,23 @@
+<template lang="pug">
+    .cart__container
+        div(v-if="items.length > 0")
+            .cart__details
+                order-form
+                cart-items(:items="items")
+                
+            button.cart__send-btn.button(type="button") Подтвердить заказ
+        empty-cart(v-else)
+</template>
+
+
 <script>
 import cartItems from "./components/CartItems.vue";
 import orderForm from "./components/OrderForm.vue";
+import emptyCart from "./components/EmptyCart.vue";
+
+import { ApiCart } from '../../js/utils/api';
+import notyShow from '../../js/utils/notyShow';
+import showNoty from '../../js/utils/notyShow';
 
 
 export default {
@@ -12,37 +29,29 @@ export default {
     components: {
         cartItems,
         orderForm,
+        emptyCart,
     },
 
     data() {
         return {
-
+            items: []
         };
     },
 
     created() {
-        // console.log(this);
 
-        fetch(`${this.apiLinkCart}/items`, {
-            // credentials:'include',
-        }).then(response => {
+        fetch(ApiCart.items).then(response => {
             console.log(response);
-            if ( !response.ok ) throw Error
+            if ( !response.ok ) throw 'Произошла ошибка при загрузке корзины';
             return response.json();
         }).then(result => {
             console.log(result);
+            this.items = result._embedded.items;
+            console.log(this.items);
         }).catch( err => {
             console.log(err);
+            showNoty('error', err);
         });
     }
 }
 </script>
-
-<template lang="pug">
-    .cart__container
-        .cart__details
-            order-form
-            cart-items
-        button.cart__send-btn.button(type="button") Подтвердить заказ
-
-</template>

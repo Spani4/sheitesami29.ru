@@ -37,7 +37,7 @@
     }
 
     &__title {
-        padding-right: 15px;
+        padding-right: 20px;
         font-size: 18px;
         text-transform: uppercase;
     }
@@ -108,12 +108,12 @@
         font-size: 30px;
         line-height: 22px;
         text-align: center;
-        color: black;
+        color: $main-font-color;
 
         cursor: pointer;
 
         &:hover {
-            text-shadow: 0 0 2px #000;
+            text-shadow: 0 0 2px $main-font-color;
         }
     }
 }

@@ -1,10 +1,7 @@
-import notyShow from './notyShow';
+import notyShow from '../utils/notyShow';
+import { ApiCart } from '../utils/api';
 
 const productItems = document.querySelectorAll('.js-product-item');
-const apiLinkCart = document.querySelector('[data-api-link-cart]').dataset.apiLinkCart;
-
-let apiCart;
-
 
 
 function initAddingToCart(productItem) {
@@ -20,28 +17,23 @@ function initAddingToCart(productItem) {
         });
 
         try {
-            fetch(apiCart._links.items.href,{
+            fetch(ApiCart.items, {
                 method: 'POST',
-                // credentials:'include',
                 body
-            })
-            .then(response => {
+            }).then(response => {
                 if ( !response.ok ) {
+                    if ( response.statusText == "Conflict" ) {
+                        notyShow('warning', 'Товар уже в корзине');
+                    }
                     throw new Error;
                 } else {
-                    console.log(response);
                     return response.json();
                 }
-            }).then(result => {
-                console.log(result)
-                return result;
             })
         } catch(err) {
             console.log(err);
-            notyShow('error', 'Произошла ошибка. Перезагрузите страницу');
+            notyShow('error', 'Ошибка соединения');
         }
-        
-
     });
 }
 
@@ -91,27 +83,10 @@ function initFavoritesLabels() {
 export default function() {
 
     if ( !productItems.length ) return;
-
-
-    // ЗАХАРДКОДИТЬ ССЫЛКА
-    fetch(apiLinkCart).then(response => {
-        if (response.ok) {
-            return response.json();
-        } else {
-            throw new Error;
-        }
-    }).then(result => {
         
-        apiCart = result;
-        productItems.forEach(productItem => {
-            initAddingToCart(productItem);
-        });
-    }).catch(err => {
-        notyShow('error', 'Произошла ошибка при загрузке страницы');
-    });
-
     productItems.forEach(productItem => {
         initAddingToFavorites(productItem);
         initFavoritesLabels(productItem);
+        initAddingToCart(productItem);
     });
 }

@@ -20,6 +20,10 @@
 .cart {
 
     @extend %outer;
+
+    &__wrapper {
+        margin-bottom: 60px;
+    }
     
     &__details {
 
@@ -108,5 +112,24 @@
     &__send-btn {
         display: block;
         margin: 60px auto;
+    }
+
+    &__empty {
+        @include flex(col,fs,c);
+        padding-top: 60px;
+
+        &-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 35px;
+        }
+        
+        &-text {
+            margin-bottom: 60px;
+            font-size: 18px;
+            line-height: 40px;
+            font-weight: 500;
+            text-align: center;
+        }
     }
 }

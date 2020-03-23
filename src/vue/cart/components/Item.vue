@@ -1,18 +1,3 @@
-<script>
-export default {
-
-    props: {
-        product: Object,
-    },
-
-    data() {
-        return {
-            
-        };
-    },
-}
-</script>
-
 <template lang="pug">
 
     .cart-item
@@ -39,3 +24,25 @@ export default {
                 .cart-item__total-price {{ product.price * product.count }} &#x20bd;
         
 </template>
+
+
+
+<script>
+export default {
+
+    props: {
+        product: Object,
+    },
+
+    data() {
+        return {
+            
+        };
+    },
+    
+    created() {
+        console.log(this.product);
+    }
+}
+</script>
+

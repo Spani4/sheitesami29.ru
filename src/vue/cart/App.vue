@@ -1,6 +1,6 @@
 <script>
-import cartItems from "./CartItems.vue";
-import cartForm from "./CartForm.vue";
+import cartItems from "./components/CartItems.vue";
+import orderForm from "./components/OrderForm.vue";
 
 
 export default {
@@ -11,7 +11,7 @@ export default {
 
     components: {
         cartItems,
-        cartForm,
+        orderForm,
     },
 
     data() {
@@ -39,7 +39,7 @@ export default {
 <template lang="pug">
     .cart__container
         .cart__details
-            cart-form
+            order-form
             cart-items
         button.cart__send-btn.button(type="button") Подтвердить заказ
 

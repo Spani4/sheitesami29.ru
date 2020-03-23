@@ -5,7 +5,9 @@ block content
         .product-card__wrapper.wrapper
             h1.product-card__title.page-title ШВЕЙНАЯ МАШИНКА JANOME 517
 
-            .product-card__content.js-product-card
+            .product-card__content.js-product-item(
+                data-product-id='productId'
+            )
                 .product-card__col-image
                     .product-card__product-image(data-bg=`url(${require('../../images/machine.png')})`)
 

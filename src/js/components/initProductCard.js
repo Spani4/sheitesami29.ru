@@ -1,4 +1,4 @@
-const productCard = document.querySelector('.js-product-card');
+const productCard = document.querySelector('.js-product-item');
 const rollElem = productCard.querySelector('.js-roll-elem');
 const contents = productCard.querySelectorAll('.js-content');
 

@@ -1,3 +1,5 @@
+include ../mixins/product-item.pug
+
 .product-slider
     button.product-slider__btn.slider-btn.left.icon-btn.js-prev-btn(type="button", aria-label="Назад")
         svg.icon
@@ -9,9 +11,20 @@
 
         .product-slider__wrapper.swiper-wrapper
 
-            each i in [1,2,3,4,5,6]
+            - var productIds = [
+            -   '0f5e3b23e0d5533c013903eef2b47224',
+            -   '173161678bc1a6cd976acc5b9ef081d5',
+            -   '515c960f45729a8b9624c127598da726',
+            -   'a8ee53f8229ff8eaad55d583bdb00c7a',
+            -   'ea7c7525db87f93bd8663998db28c20f',
+            -   '10050eb03338d2dae4c8964b3dbe5eee'
+            - ]
+            each id in productIds
                 .product-slider__slide.swiper-slide
                     .product-slider__item
-                        include ./product-item.pug
+                        +product-item(id)
+
+                    //- each item in [1,2,3,4,5,6]
+                        //- include ./product-item.pug
 
 

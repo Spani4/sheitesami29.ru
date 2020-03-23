@@ -8,6 +8,7 @@
 
     &__like {
 
+        display: none;
         position: absolute;
         width: 30px;
         height: 30px;
@@ -15,11 +16,15 @@
         top: 12px;
         z-index: 1;
 
-        &:hover .icon {
-            
-            stroke: $bg-color;
-            fill: $bg-color-dark;
+        &.active {
+            display: block;
         }
+
+        // &:hover .icon {
+            
+        //     stroke: $bg-color;
+        //     fill: $bg-color-dark;
+        // }
     }
     
     &__image {
@@ -69,6 +74,14 @@
         .button {
             width: 220px;
             margin: 30px 0;
+        }
+
+        .button,
+        .button-round {
+            &:active {
+                box-shadow: none;
+                opacity: .9;
+            }
         }
 
         &-options {

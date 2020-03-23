@@ -14,10 +14,10 @@ header.header-mobile.js-header-mobile
             a.header-mobile__logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
 
         .header-mobile__section
-            a.header-mobile__icons-item.icon-btn(href="#", aria-label="Избранное")
+            a.header-mobile__icons-item.icon-btn.js-favorites(href="#", aria-label="Избранное")
                 svg.icon
                     use(href="/icons/icons.svg#heart")
-            a.header-mobile__icons-item.icon-btn(href="#", aria-label="Корзина")
+            a.header-mobile__icons-item.icon-btn.js-cart(href="#", aria-label="Корзина")
                 svg.icon
                     use(href="/icons/icons.svg#cart")
 

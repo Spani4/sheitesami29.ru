@@ -16,10 +16,13 @@ header.header
                         onclick='doGTranslate("ru|en"); return false;'
                         ) EN
                 .header__icons
-                    a.header__icons-item.icon-btn(href="#", aria-label="Избранное")
+                    a.header__icons-item.icon-btn.js-favorites(href="#", aria-label="Избранное")
                         svg.icon
                             use(href="/icons/icons.svg#heart")
-                    a.header__icons-item.icon-btn(href="#", aria-label="Корзина")
+                    a.header__icons-item.icon-btn.js-cart(href="#"
+                        aria-label="Корзина"
+                        data-api-link-cart="/api/cart"
+                    )
                         svg.icon
                             use(href="/icons/icons.svg#cart")
                     button.header__icons-item.icon-btn(type="button", aria-label="Поиск")

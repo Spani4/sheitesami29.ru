@@ -1,6 +1,5 @@
 .article-item {
 
-    @extend %outer;
     @include flex(row,s);
 
     height: fit-content;
@@ -25,13 +24,6 @@
             min-width: 40%;
             width: 40%;
         }
-
-        @include screen(991) {
-
-            &.place-main {
-                display: none;
-            }
-        }
     }
 
     &__content {
@@ -43,6 +35,10 @@
         margin-bottom: 20px;
         font-size: 24px;
         font-weight: 500;
+
+        @include screen(767) {
+            font-size: 18px;
+        }
     }
 
     &__text {

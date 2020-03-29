@@ -1,30 +1,40 @@
 <template lang="pug">
     .cart__container
-        div(v-if="items.length > 0")
+        div(v-if="cartItems.length > 0")
             .cart__details
                 order-form
-                cart-items(:items="items")
-                
-            button.cart__send-btn.button(type="button") Подтвердить заказ
+                cart-items(:items="cartItems")
+
+            transition(name="grow")    
+                ul.cart__errors(v-if="errors.length > 0")
+                    li(
+                        v-for="error in errors"
+                        :key="error"
+                        ) {{ error }}
+
+            button.cart__send-btn.button(
+                type="button"
+                @click="checkform"
+            ) Подтвердить заказ
         empty-cart(v-else)
 </template>
 
 
 <script>
+import { mapState } from 'vuex';
+
 import cartItems from "./components/CartItems.vue";
 import orderForm from "./components/OrderForm.vue";
 import emptyCart from "./components/EmptyCart.vue";
+import showNoty from '../../js/utils/showNoty';
+import store from "../../store";
+import { eventBus } from './';
 
-import { ApiCart } from '../../js/utils/api';
-import notyShow from '../../js/utils/notyShow';
-import showNoty from '../../js/utils/notyShow';
-
+const apiLinkOrder = document.querySelector('[data-api-link-order]').dataset.apiLinkOrder;
 
 export default {
 
-    props: {
-        apiLinkCart: String,
-    },
+    store,
 
     components: {
         cartItems,
@@ -32,26 +42,44 @@ export default {
         emptyCart,
     },
 
+
     data() {
         return {
-            items: []
+            items: [],
+            errors: []
         };
     },
 
-    created() {
+    methods: {
 
-        fetch(ApiCart.items).then(response => {
-            console.log(response);
-            if ( !response.ok ) throw 'Произошла ошибка при загрузке корзины';
-            return response.json();
-        }).then(result => {
-            console.log(result);
-            this.items = result._embedded.items;
-            console.log(this.items);
-        }).catch( err => {
-            console.log(err);
-            showNoty('error', err);
+        checkform() {
+            eventBus.$emit('check-form');
+        },
+    },
+
+    computed: {
+        ...mapState(['cartItems']),
+    },
+
+    created() {
+        store.commit('setOrderApi', apiLinkOrder);
+
+        eventBus.$on('validated', errors => {
+            this.errors = errors
         });
     }
 }
 </script>
+
+<style lang="scss" scoped>
+
+.grow-enter,
+.grow-leave {
+    opacity: 0;
+}
+
+.grow-enter-active,
+.grow-leave-active {
+    transition: opacity .3s;
+}
+</style>

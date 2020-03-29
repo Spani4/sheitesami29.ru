@@ -1,0 +1,10 @@
+extends ../layout/layout.pug
+
+block content
+    main.articles
+        .articles__wrapper.wrapper
+            h1.articles__title.page-title полезные статьи
+            .articles__content
+                each item in [1,2,3,4,5,6,7]
+                    .articles__content-item
+                        include ../components/article-item.pug

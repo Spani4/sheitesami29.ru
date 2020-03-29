@@ -1,0 +1,12 @@
+.main-articles {
+	@extend %outer;
+
+	.article-item {
+
+		&__image {
+			@include screen(991) {
+				display: none;
+			}
+		}
+	}
+}

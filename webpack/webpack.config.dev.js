@@ -18,7 +18,7 @@ module.exports = merge(common, {
             warnings: true,
             errors  : true
         },
-        open: "Chrome",
+        open: "chrome",
         proxy: [
             {
                 context: ['/api', '/data'],
@@ -27,7 +27,6 @@ module.exports = merge(common, {
                 withCredentials: true,
             },
         ],
-
     },
     plugins    : [
         new Webpack.DefinePlugin({

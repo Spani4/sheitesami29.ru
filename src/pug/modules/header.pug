@@ -15,14 +15,15 @@ header.header
                         type='button', 
                         onclick='doGTranslate("ru|en"); return false;'
                         ) EN
-                .header__icons
-                    a.header__icons-item.icon-btn.js-favorites(href="#", aria-label="Избранное")
+                #header-panel.header__icons
+                    a.header__icons-item.icon-btn.js-favorites(href="cart.html", aria-label="Избранное")
                         svg.icon
                             use(href="/icons/icons.svg#heart")
                     a.header__icons-item.icon-btn.js-cart(href="#"
                         aria-label="Корзина"
-                        data-api-link-cart="/api/cart"
+                        data-api-link-cart="https://ss.1mcg.ru/api/cart/items"
                     )
+                        cart-counter
                         svg.icon
                             use(href="/icons/icons.svg#cart")
                     button.header__icons-item.icon-btn(type="button", aria-label="Поиск")

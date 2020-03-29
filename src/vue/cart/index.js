@@ -3,9 +3,17 @@ import Vue from "vue";
 import App from "./App.vue";
 
 const el = document.querySelector('#cart');
-const apiLinkOrder = document.querySelector('[data-api-link-order]').dataset.apiLinkOrder;
-const apiLinkCart = document.querySelector('[data-api-link-cart]').dataset.apiLinkCart;
 
+
+export const eventBus = new Vue({
+
+    data: () => {
+
+        return {};
+    }
+});
+
+Vue.use(eventBus);
 
 export default class Cart {
 
@@ -19,11 +27,7 @@ export default class Cart {
                 test: 'test',
             },
             
-            render: (h) => h(App,{
-                props: {
-                    apiLinkCart,
-                }
-            }),
+            render: (h) => h(App),
         });
     }
 }

@@ -23,6 +23,8 @@
 
     padding-bottom: 60px;
 
+
+
     &__title.page-title {
         letter-spacing: normal;
     }
@@ -33,6 +35,20 @@
 
         @include screen(768) {
             @include flex(col);
+        }
+
+        &.is-favorite {
+            .product-card__favorite-btn .icon {
+                fill: $main-font-color;
+            }
+        }
+        &.in-cart {
+            .product-card__cart-btn:disabled {
+                opacity: .3;
+                cursor: default;
+    
+                &:hover {box-shadow: none;}
+            }
         }
     }
 
@@ -299,24 +315,17 @@
         }
     }
 
-    &__cart-button {
+    &__cart-btn {
         margin-right: 20px;
+
+        @include screen(585) {
+            width: 220px;
+        }
     }
 
     .icon-btn {
         width: 30px;
         height: 30px;
-
-        .icon {
-            transition: all .2s;
-        }
-
-        &:hover {
-
-            .icon {
-                fill: $main-font-color;
-            }
-        }
     }
 
     .product-slider {

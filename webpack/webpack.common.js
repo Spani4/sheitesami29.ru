@@ -84,7 +84,7 @@ module.exports = {
                 type   : 'javascript/auto'
             },
             {
-                test: /fonts[\\\/].+\.(eot|ttf|woff|woff2)$/,
+                test: /fonts[\\\/].+\.(eot|ttf|otf|ttc|woff|woff2)$/,
                 use : {
                     loader : 'file-loader',
                     options: {

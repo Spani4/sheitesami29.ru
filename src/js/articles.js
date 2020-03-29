@@ -1,9 +1,8 @@
-import "../scss/main.scss";
+import "../scss/articles.scss";
 
 import LazyLoad from "vanilla-lazyload";
 
 import initGlobalScripts from "./global";
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,4 +13,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initGlobalScripts();
 });
-

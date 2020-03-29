@@ -36,6 +36,7 @@
     }
 
     &__title {
+        margin-top: 30px;
         margin-bottom: 30px;
         font-weight: 500;
         text-transform: uppercase;
@@ -54,24 +55,32 @@
         }
 
         &-group {
-            margin-bottom: 60px;
+            width: auto;
+        }
 
-            @include screen(991) {
-                margin-bottom: 50px;
-            }
-            @include screen(768) {
-                margin-bottom: 40px;
-            }
+        &-group-wrapper {
+            @include flex(row,s,s)
+
             @include screen(585) {
-                margin-bottom: 30px;
+                @include flex(col,fs);
+                margin-bottom: 0;
             }
         }
 
-        &-row {
-            @include flex();
+        &-col {
+            @include flex(col);
             
             &:not(:last-child) {
                 margin-bottom: 30px;
+                
+                @include screen(585) {
+                    margin-bottom: 0;
+                }
+            }
+
+            @include screen(585) {
+                @include flex(col,fs);
+                margin-bottom: 0;
             }
         }
 
@@ -79,9 +88,19 @@
             @include flex(col,sb,fs);
             height: 55px;
             margin-right: 40px;
+            margin-bottom: 20px;
 
             @include screen(1199) {
                 margin-right: 30px;
+            }
+            @include screen(585) {
+                margin-right: 0;
+            }
+        }
+
+        &-input.form-input {
+            @include screen(585) {
+                width: 280px;
             }
         }
 
@@ -108,6 +127,37 @@
         }
     }
 
+    &__totals {
+
+        padding: 10px 0;
+
+        &-row {
+            @include flex(row,sb);
+            margin: 10px 0;
+
+            @include screen(585) {
+                font-size: 14px;
+            }
+
+            &-result {
+                @include flex(row,sb,fs,wrap);
+                margin: 20px 0;
+                font-weight: 500;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    &__errors {
+        margin-bottom: -30px;
+        padding: 10px 0;
+        line-height: 25px;
+        text-align: center;
+        color: $color3;
+
+        overflow: hidden;
+
+    }
 
     &__send-btn {
         display: block;

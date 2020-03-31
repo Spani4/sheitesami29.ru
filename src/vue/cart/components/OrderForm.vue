@@ -9,29 +9,29 @@
                         .required Фамилия
                         input.cart__form-input.form-input(type="text"
                             placeholder="Иванов"
-                            v-model="surname"
+                            v-model="orderData.surname"
                         )
                     label.cart__form-item
                         .required Имя
                         input.cart__form-input.form-input(type="text"
                             placeholder="Иван"
-                            v-model="name"
+                            v-model="orderData.name"
                         )
                 .cart__form-col
                     label.cart__form-item
                         .required e-mail
                         input.cart__form-input.form-input(type="text"
                             placeholder="ivan_ivanov777@gmail.com"
-                            v-model="email"
+                            v-model="orderData.email"
                         )
                     label.cart__form-item
                         .required Телефон
                         input.cart__form-input.form-input(type="text"
                             placeholder="+7 (9__) ___-__-__"
-                            :model="phone"
+                            :model="orderData.phone"
                             v-imask="phoneMask"
-                            @accept="phone = $event.detail.unmaskedValue;"
-                            @complete="phone = $event.detail.unmaskedValue;"
+                            @accept="orderData.phone = $event.detail.unmaskedValue;"
+                            @complete="orderData.phone = $event.detail.unmaskedValue;"
                         )
 
         .cart__form-group
@@ -42,15 +42,17 @@
                         .required Страна
                         input.cart__form-input.form-input(type="text"
                             placeholder="Россия"
-                            v-model="country"
+                            v-model="orderData.country"
                         )
                     label.cart__form-item
                         .required Город
                         input.cart__form-input.form-input(type="text"
                             placeholder="Архангельск"
-                            v-model="city"
+                            v-model="orderData.city"
                         )
+
                 .cart__form-col
+
                     label.cart__form-item
                         .required Способ доставки
                         select.cart__form-input.form-input(
@@ -58,8 +60,10 @@
                             v-model="delivery"
                         )
                             option(
-                                v-for="option in deliveryOptions"
-                            ) {{ option }}
+                                v-for="(option, index) in deliveryOptions"
+                                :value="index"
+                            ) {{ option.text }}
+
                     label.cart__form-item
                         .required Способ оплаты
                         select.cart__form-input.form-input(
@@ -67,7 +71,8 @@
                             v-model="payment"
                         )
                             option(
-                                v-for="option in paymentOptions"
+                                v-for="(option, index) in paymentOptions"
+                                :value="index"
                             ) {{ option }}
 </template>
 
@@ -78,18 +83,27 @@ import { eventBus } from '../';
 
 export default {
 
+    props: {
+        orderData: Object,
+    },
+
     data() {
         return {
-            name: '',
-            surname: '',
-            email: '',
-            phone: '',
-            country: 'Россия',
-            city: '',
-            delivery: '',
-            payment: '',
 
-            deliveryOptions: ['Самовывоз с 11:00 до 19:00', 'Почтой России', 'Доставка СДЭК'],
+            delivery: null,
+            payment: null,
+
+            deliveryOptions: [{
+                text: 'Самовывоз с 11:00 до 19:00',
+                price: 0
+            }, {
+                text: 'Почтой России',
+                price: 250
+            }, {
+                text: 'Доставка СДЭК',
+                price: 250,
+            }],
+
             paymentOptions: ['Онлайн оплата картой', 'При получении (самовывоз)'],
 
             phoneMask: {
@@ -98,37 +112,20 @@ export default {
         };
     },
 
-    methods: {
-        
-        validate() {
-            let errors = [];
-            
-            if ( this.name.trim().length == 0 ) errors.push('Вы не указали имя');
+    methods: {},
 
-            if ( this.surname.trim().length == 0 ) errors.push('Вы не указали фамилию');
-
-            if ( !(/^.+@.+\..+$/.test(this.email)) )  errors.push('Некорректный email');
-
-            if ( this.phone.length == 0 )  errors.push('Не указан номер телефона')
-            else if ( this.phone.length < 11 )  errors.push('Некорректный номер телефона');
-
-            if ( this.country.trim().length == 0 ) errors.push('Не указана страна доставки');
-            if ( this.city.trim().length == 0 ) errors.push('Не указан город доставки');
-            if ( this.delivery.trim().length == 0 ) errors.push('Укажите способ доставки');
-            if ( this.payment.trim().length == 0 ) errors.push('Укажите способ оплаты');
-
-            eventBus.$emit('validated', errors)
-
-        }
-    },
-
-    computed: {
-    },
+    computed: {},
 
     watch: {
+        delivery(newVal) {
+            this.orderData.deliveryPrice = this.deliveryOptions[this.delivery].price;
+            this.orderData.delivery = this.deliveryOptions[this.delivery].text;
+        },
+
         payment(newVal) {
-            if ( newVal == 'При получении (самовывоз)' ) {
-                this.delivery = 'Самовывоз с 11:00 до 19:00';
+            this.orderData.payment = this.paymentOptions[newVal];
+            if ( newVal == 1 ) { // (если оплата при получении, переключить доставку на самовывоз)
+                this.delivery = 0;
             }
         }
     },
@@ -138,9 +135,7 @@ export default {
     },
 
     created() {
-        eventBus.$on('check-form', () => {
-            this.validate();
-        })
+
     }
 }
 </script>

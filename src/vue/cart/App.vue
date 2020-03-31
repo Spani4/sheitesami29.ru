@@ -2,8 +2,13 @@
     .cart__container
         div(v-if="cartItems.length > 0")
             .cart__details
-                order-form
-                cart-items(:items="cartItems")
+                order-form(
+                    :orderData="orderData"
+                )
+                cart-items(
+                    :items="cartItems"
+                    :deliveryPrice="orderData.deliveryPrice"
+                )
 
             transition(name="grow")    
                 ul.cart__errors(v-if="errors.length > 0")
@@ -14,7 +19,7 @@
 
             button.cart__send-btn.button(
                 type="button"
-                @click="checkform"
+                @click="send"
             ) Подтвердить заказ
         empty-cart(v-else)
 </template>
@@ -28,9 +33,6 @@ import orderForm from "./components/OrderForm.vue";
 import emptyCart from "./components/EmptyCart.vue";
 import showNoty from '../../js/utils/showNoty';
 import store from "../../store";
-import { eventBus } from './';
-
-const apiLinkOrder = document.querySelector('[data-api-link-order]').dataset.apiLinkOrder;
 
 export default {
 
@@ -45,15 +47,47 @@ export default {
 
     data() {
         return {
-            items: [],
-            errors: []
+            errors: [],
+
+            orderData: {
+                name: '',
+                surname: '',
+                email: '',
+                phone: '',
+                country: '',
+                city: '',
+                delivery: '',
+                payment: '',
+                deliveryPrice: 0,
+            }
         };
     },
 
     methods: {
+        validateData() {
+            let errors = [];
+            
+            if ( this.orderData.name.trim().length == 0 ) errors.push('Вы не указали имя');
 
-        checkform() {
-            eventBus.$emit('check-form');
+            if ( this.orderData.surname.trim().length == 0 ) errors.push('Вы не указали фамилию');
+
+            if ( !(/^.+@.+\..+$/.test(this.orderData.email)) )  errors.push('Некорректный email');
+
+            if ( this.orderData.phone.length == 0 )  errors.push('Не указан номер телефона')
+            else if ( this.orderData.phone.length < 11 )  errors.push('Некорректный номер телефона');
+
+            if ( this.orderData.country.trim().length == 0 ) errors.push('Не указана страна доставки');
+            if ( this.orderData.city.trim().length == 0 ) errors.push('Не указан город доставки');
+            if ( this.orderData.delivery.trim().length == 0 ) errors.push('Укажите способ доставки');
+            if ( this.orderData.payment.trim().length == 0 ) errors.push('Укажите способ оплаты');
+
+            return errors;
+        },
+
+
+        send() {
+            this.errors = this.validateData();
+
         },
     },
 
@@ -61,13 +95,7 @@ export default {
         ...mapState(['cartItems']),
     },
 
-    created() {
-        store.commit('setOrderApi', apiLinkOrder);
-
-        eventBus.$on('validated', errors => {
-            this.errors = errors
-        });
-    }
+    created() {}
 }
 </script>
 

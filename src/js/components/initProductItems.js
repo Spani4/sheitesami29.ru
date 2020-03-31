@@ -61,20 +61,22 @@ export default function () {
     favorites.markFavoriteItems();
     markItemsInCart();
 
-    document.addEventListener('click', (e) => {
+    productItems.forEach(productItem => {
 
-        if (e.target.closest('.js-favorite-add')) {
-            const productItem = e.target.closest('.js-product-item');
-            const productId = productItem.dataset.productId;
-            favorites.handleFavoriteBtnClick(productId);
-            return;
-        }
-
-        if (e.target.closest('.js-cart-add') && !isCooldown) {
-            const productItem = e.target.closest('.js-product-item');
-            handleCartBtnClick(productItem);
-            isCooldown = true;
-            setTimeout(() =>{ isCooldown = false}, 500);
-        }
+        productItem.addEventListener('click', (e) => {
+    
+            if (e.target.closest('.js-favorite-add')) {
+                const productId = productItem.dataset.productId;
+                favorites.handleFavoriteBtnClick(productId);
+                return;
+            }
+    
+            if (e.target.closest('.js-cart-add') && !isCooldown) {
+                handleCartBtnClick(productItem);
+                isCooldown = true;
+                setTimeout(() =>{ isCooldown = false }, 500);
+            }
+        });
     });
+
 }

@@ -3,8 +3,6 @@ import Vue from "vue";
 import cartCounter from "./cart-counter.vue";
 import store from "../../store";
 
-const apiLinkCart = document.querySelector('[data-api-link-cart]').dataset.apiLinkCart;
-
 export default class Headers {
 
 	constructor(selector) {
@@ -19,7 +17,6 @@ export default class Headers {
 			},
 
 			created() {
-				store.commit('setCartApi', apiLinkCart);
 				store.dispatch('fetchCartItems');
 			}
 		});

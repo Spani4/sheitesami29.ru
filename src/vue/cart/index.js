@@ -5,16 +5,6 @@ import App from "./App.vue";
 const el = document.querySelector('#cart');
 
 
-export const eventBus = new Vue({
-
-    data: () => {
-
-        return {};
-    }
-});
-
-Vue.use(eventBus);
-
 export default class Cart {
 
     constructor() {
@@ -23,9 +13,7 @@ export default class Cart {
 
             el,
     
-            data: {
-                test: 'test',
-            },
+            data: {},
             
             render: (h) => h(App),
         });

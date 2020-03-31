@@ -2,6 +2,7 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 import showNoty from '../js/utils/showNoty';
+import api from '../js/configs/api';
 
 Vue.use(Vuex);
 
@@ -10,17 +11,15 @@ export default new Vuex.Store({
 
 	state: {
 		cartItems: [],
-		apiLinks: {
-			order: {},
-			cart: {},
-		}
+
+		orderData: {},
 	},
 
 	actions: {
 
 		fetchCartItems({commit, getters}) {
 
-			const link = getters.getApiCartItems;
+			const link = api.cartItems;
 			
 			fetch(link).then(response => {
 				if ( !response.ok ) throw 'Произошла ошибка при загрузке корзины. Попробуйте снова.';
@@ -34,7 +33,7 @@ export default new Vuex.Store({
 
 		addItemToCart({commit, getters}, item) {
 
-			const link = getters.getApiCartItems;
+			const link = api.cartItems;
 
 			fetch(link, {
 				method: 'POST',
@@ -60,7 +59,7 @@ export default new Vuex.Store({
 		
 		removeItemFromCart({commit, getters}, item) {
 			
-			const link = `${getters.getApiCartItems}/${item.id}`;
+			const link = `${api.cartItems}/${item.id}`;
 			
 			fetch(link, {method: 'DELETE'}).then(response => {
 				if ( !response.ok ) throw 'Ошибка соединения';
@@ -77,14 +76,6 @@ export default new Vuex.Store({
 			state.cartItems = cartItems;
 		},
 
-		setCartApi(state, apiCart) {
-			state.apiLinks.cart = apiCart;
-		},
-
-		setOrderApi(state, apiOrder) {
-			state.apiLinks.order = apiOrder;
-		},
-
 		addItemToCart(state, item) {
 			state.cartItems.push(item);
 		},
@@ -96,15 +87,7 @@ export default new Vuex.Store({
 
 	getters: {
 
-		getApiCartItems(state) {
-			if ( process.env.NODE_ENV == 'development' ) return '/api/cart/items';
-			return state.apiLinks.cart;
-		},
-		
-		getApiOrder(state) {
-			if ( process.env.NODE_ENV == 'development' ) return '/api/order';
-			return state.apiLinks.order;
-		}
+
 	}
 
 })

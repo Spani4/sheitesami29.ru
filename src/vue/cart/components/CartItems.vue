@@ -11,14 +11,14 @@
         .cart__totals
             .cart__totals-row
                 span Стоимость товаров
-                span {{ getItemsPrice }} &#x20bd;
+                span {{ calculateItemsPrice }} &#x20bd;
             .cart__totals-row
                 span Стоимость доставки
                 span {{ deliveryPrice }} &#x20bd;
 
             .cart__totals-row-result
                 span итого к оплате:
-                span {{ getItemsPrice + deliveryPrice }} &#x20bd;
+                span {{ deliveryPrice + calculateItemsPrice }} &#x20bd;
 
 </template>
 
@@ -28,7 +28,8 @@ import item from "./Item.vue";
 
 export default {
   props: {
-    items: Array
+    items: Array,
+    deliveryPrice: Number,
   },
 
   components: {
@@ -36,18 +37,16 @@ export default {
   },
 
   data() {
-    return {
-      deliveryPrice: "250"
-    };
+    return {};
   },
 
   computed: {
-    getItemsPrice() {
+    calculateItemsPrice() {
       let total = 0;
       this.items.forEach(item => {
         total += item.price * item.count;
       });
-      return total;
+      return Number(total);
     }
   }
 };

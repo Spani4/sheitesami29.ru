@@ -11,8 +11,6 @@ function initTabs() {
 
             if ( tab.classList.contains('active') ) return;
 
-            rollUp();
-
             tabs.forEach((tab, j) => {
                 j == i ? tab.classList.add('active') : tab.classList.remove('active');
             });
@@ -35,28 +33,24 @@ function initUnroll(content) {
     const collapsible = content.querySelector('.js-collapsible');
     const rollBtn = content.querySelector('.js-roll-btn');
 
+    rollBtn.onclick = rollToggle;
+
     if ( collapsible.offsetHeight >= collapsible.scrollHeight ) {
 
         rollBtn.classList.add('hidden');
     } else {
 
         rollBtn.classList.remove('hidden');
-        rollBtn.addEventListener('click', () => {
-            rollToggle();
-        });
+    }
+
+    if ( rollElem.classList.contains('unrolled' )) {
+        rollBtn.classList.remove('hidden');
     }
 }
 
-function rollUp() {
-    rollElem.classList.remove('unrolled');
-}
-
-// function rollDown() {
-//     rollElem.classList.add('unrolled');
-// }
-
 function rollToggle() {
     rollElem.classList.toggle('unrolled');
+    console.log('toggle')
 }
 
 export default function() {

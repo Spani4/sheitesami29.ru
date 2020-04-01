@@ -4,8 +4,6 @@ function initBurgerButton() {
 
     const burger = headerMobile.querySelector('.js-burger');
 
-    if ( burger === null ) return;
-
     burger.addEventListener('click', () => {
         burger.classList.toggle('active');
         headerMobile.classList.toggle('active');
@@ -29,8 +27,6 @@ function initDropDowns() {
 }
 
 export default function() {
-
-    if (!headerMobile) return;
 
     initBurgerButton();
     initDropDowns();

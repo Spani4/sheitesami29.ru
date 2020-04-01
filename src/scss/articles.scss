@@ -1,0 +1,62 @@
+@import "globals/global";
+
+@import "modules/header";
+@import "modules/header-mobile";
+@import "modules/nav";
+@import "modules/nav-mobile";
+@import "modules/footer";
+
+
+@import "components/wrapper";
+@import "components/link-social";
+@import "components/buttons";
+@import "components/custom-text";
+@import "components/page-title";
+@import "components/article-item";
+
+
+.articles {
+
+    @extend %outer;
+
+	&__wrapper {
+		padding-bottom: 60px;
+	}
+
+	&__title {
+        font-size: 24px;
+	}
+	
+    &__content {
+		
+		&-item {
+			padding: 20px 0;
+
+			&:not(:last-child) {
+				border-bottom: 2px solid rgba($color2, .5);
+			}
+		}
+	}
+	
+	.article-item {
+
+		@include screen(767) {
+			@include flex(col);
+		}
+
+		&__image {
+			@include screen(767) {
+				width: 100%;
+				min-height: 260px;
+				height: 50vw;
+				margin-bottom: 20px;
+			}
+		}
+
+		&__text {
+			@include screen(767) {
+				display: none;
+			}
+		}
+	}
+}

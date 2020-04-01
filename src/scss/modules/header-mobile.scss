@@ -89,6 +89,26 @@
         }
     }
 
+    &__icons-item {
+        position: relative;
+        
+        .counter {
+            position: absolute;
+
+            width: 16px;
+            height: 16px;
+            right: -2px;
+            top: 0;
+            font-size: 10px;
+            line-height: 18px;
+            text-align: center;
+            border-radius: 50%;
+            background-color: $color3;
+            color: $font-color-light;
+            box-shadow: 0 0 1px 0px $main-font-color;
+        }
+    }
+
     .icon {
         @include transition(fill);
     }
@@ -158,26 +178,4 @@
             stroke: transparent;
         }
     }
-
-    // .lang-switcher__btn {
-    //     position: relative;
-    //     padding: 0 10px;
-    //     font-size: inherit;
-    //     background-color: transparent;
-    //     border-style: none;
-    //     cursor: pointer;
-
-    //     &::after {
-    //         content: "";
-    //         position: absolute;
-    //         left: -5px;
-    //         right: -5px;
-    //         top: -5px;
-    //         bottom: -5px;
-    //     }
-
-    //     &:hover {
-    //         text-shadow: 0 0 1px #000;
-    //     }
-    // }
 }

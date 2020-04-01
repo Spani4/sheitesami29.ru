@@ -6,7 +6,7 @@ block content
             h1.product-card__title.page-title ШВЕЙНАЯ МАШИНКА JANOME 517
 
             .product-card__content.js-product-item(
-                data-product-id='productId'
+                data-product-id='0f5e3b23e0d5533c013903eef2b47224'
             )
                 .product-card__col-image
                     .product-card__product-image(data-bg=`url(${require('../../images/machine.png')})`)
@@ -70,8 +70,8 @@ block content
                                         span.product-card__tabs-unroll-btn.js-roll-btn Все характеристики
 
                     .product-card__info-bottom
-                        button.product-card__cart-button.button(type="button") Добавить в корзину
-                        button.product-card__cart-button.icon-btn(type="button", aria-label="Добавить в избранное")
+                        button.product-card__cart-btn.button.js-cart-add(type="button") Добавить в корзину
+                        button.product-card__favorite-btn.icon-btn.js-favorite-add(type="button", aria-label="Добавить в избранное")
                             svg.icon
                                 use(href="/icons/icons.svg#heart")     
 

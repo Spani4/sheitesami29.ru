@@ -6,7 +6,29 @@
     min-height: 430px;
     text-align: center;
 
-    &__like {
+    &.is-favorite {
+
+        .product-item__favorite-label {
+            display: block;
+        }
+
+        .product-item__favorite-btn .icon {
+            stroke: $bg-color-dark;
+            fill: $bg-color-dark;
+        }
+    }
+
+    &.in-cart {
+
+        .product-item__cart-btn:disabled {
+            opacity: .3;
+            cursor: default;
+
+            &:hover {box-shadow: none;}
+        }
+    }
+
+    &__favorite-label {
 
         display: none;
         position: absolute;
@@ -16,15 +38,10 @@
         top: 12px;
         z-index: 1;
 
-        &.active {
-            display: block;
+        .icon {
+            stroke: $bg-color-dark;
+            fill: $bg-color-dark;
         }
-
-        // &:hover .icon {
-            
-        //     stroke: $bg-color;
-        //     fill: $bg-color-dark;
-        // }
     }
     
     &__image {

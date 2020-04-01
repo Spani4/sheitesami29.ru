@@ -37,34 +37,4 @@
             font-size: 24px;
         }
     }
-    
-    // &__link {
-    //     @include flex(row, fe, c);
-    //     @include transition(opacity);
-
-    //     position: absolute;
-    //     right: 0;
-    //     top: 10px;
-    //     font-size: 18px;
-    //     color: $link-color;
-
-    //     &:hover {
-    //         opacity: .7;
-    //     }
-
-    //     .icon {
-    //         width: 20px;
-    //         height: 20px;
-    //         fill: $link-color;
-    //         stroke: transparent;
-    //     }
-
-    //     @include screen(992) {
-    //         font-size: 20px;
-    //     }
-
-    //     @include screen(768) {
-    //         display: none;
-    //     }
-    // }
 }

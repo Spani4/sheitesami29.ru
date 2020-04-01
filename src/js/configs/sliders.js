@@ -14,13 +14,14 @@ export default {
 
     popular: {
         
-        loop: true,
+        // loop: true,
         slidesPerView: 1,
         // lazy: false,
 
         navigation: {
             nextEl: '.popular-products .js-next-btn',
             prevEl: '.popular-products .js-prev-btn',
+            disabledClass: 'disabled',
         },
         
         lazy: {
@@ -35,13 +36,14 @@ export default {
 
     new: {
         
-        loop: true,
+        // loop: true,
         slidesPerView: 1,
         // lazy: false,
 
         navigation: {
             nextEl: '.new-products .js-next-btn',
             prevEl: '.new-products .js-prev-btn',
+            disabledClass: 'disabled',            
         },
 
         lazy: {

@@ -1,92 +1,82 @@
-import notyShow from '../utils/notyShow';
-import { ApiCart } from '../utils/api';
+import Vue from 'vue';
+import { mapState, mapActions } from 'vuex';
+
+import store from '../../store';
+import showNoty from '../utils/showNoty';
+import Favorites from './Favorites';
 
 const productItems = document.querySelectorAll('.js-product-item');
+const favorites = new Favorites(productItems);
 
-
-function initAddingToCart(productItem) {
-
-    const cartBtn =  productItem.querySelector('.js-cart-add');
-    const productId = productItem.dataset.productId;
-
-    cartBtn.addEventListener('click', () => {
-
-        const body = JSON.stringify({
-            id: productId,
-            count: 1
-        });
-
-        try {
-            fetch(ApiCart.items, {
-                method: 'POST',
-                body
-            }).then(response => {
-                if ( !response.ok ) {
-                    if ( response.statusText == "Conflict" ) {
-                        notyShow('warning', 'Товар уже в корзине');
-                    }
-                    throw new Error;
-                } else {
-                    return response.json();
-                }
-            })
-        } catch(err) {
-            console.log(err);
-            notyShow('error', 'Ошибка соединения');
+const vmCart = new Vue({
+    store,
+    methods: {
+        ...mapActions(['addItemToCart']),
+    },
+    computed: {
+        ...mapState(['cartItems']),
+    },
+    watch: {
+        cartItems(newCart) {
+            markItemsInCart();
         }
+    }
+})
+
+function markItemsInCart() {
+
+    const cartIds = vmCart.cartItems.map(item => item.id);
+    const itemsInCart = [...productItems].filter(item => {
+        return cartIds.some(id => id == item.dataset.productId);
+    });
+
+    itemsInCart.forEach(item => {
+        item.classList.add('in-cart')
+        item.querySelector('.js-cart-add').disabled = true;
     });
 }
 
+function handleCartBtnClick(productItem) {
 
-function initAddingToFavorites(productItem) {
+    if (productItem.classList.contains('in-cart')) {
+        showNoty('warning', 'Товар уже в корзине');
+        return;
+    }
 
-    const favoriteBtn =  productItem.querySelector('.js-favorite-add');
     const productId = productItem.dataset.productId;
-
-    favoriteBtn.addEventListener('click', () => {
-        const storageFavorites = JSON.parse(localStorage.getItem('favorites'));
-        const favorites = storageFavorites ? storageFavorites : [];
-
-        const isFavorite = favorites.some( id => id == productId );
-
-        if ( isFavorite ) {
-            notyShow('warning', 'Товар уже в избранном');
-        } else {
-            favorites.push(productId);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            initFavoritesLabels();
-            notyShow('success', 'Товар добавлен в избранное');
-        }        
+    const item = JSON.stringify({
+        id: productId,
+        count: 1
     });
+
+    vmCart.addItemToCart(item);
 }
 
+export default function () {
 
-function initFavoritesLabels() {
+    if (!productItems.length) return;
 
-    const storageFavorites = JSON.parse(localStorage.getItem('favorites'));
-    if ( !storageFavorites ) return;
-    if ( !storageFavorites.length ) return;
+    let isCooldown = false; //debounce
 
-    storageFavorites.forEach( id => {
+    favorites.markFavoriteItems();
+    markItemsInCart();
 
-        const filteredById = [...productItems].filter(productItem => productItem.dataset.productId == id);
+    productItems.forEach(productItem => {
 
-        filteredById.forEach( filteredItem => {
-            const favoriteLabel = filteredItem.querySelector('.js-favorite-label');
-            if ( !favoriteLabel ) return;
-            favoriteLabel.classList.add('active');
+        productItem.addEventListener('click', (e) => {
+    
+            if (e.target.closest('.js-favorite-add')) {
+                const productId = productItem.dataset.productId;
+                favorites.handleFavoriteBtnClick(productId);
+                return;
+            }
+    
+            if (e.target.closest('.js-cart-add') && !isCooldown) {
+                handleCartBtnClick(productItem);
+                isCooldown = true;
+                setTimeout(() =>{ isCooldown = false }, 500);
+            }
         });
     });
-}
 
-
-export default function() {
-
-    if ( !productItems.length ) return;
-        
-    productItems.forEach(productItem => {
-        initAddingToFavorites(productItem);
-        initFavoritesLabels(productItem);
-        initAddingToCart(productItem);
-    });
 }

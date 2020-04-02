@@ -90,13 +90,30 @@ export default {
             return errors;
         },
 
-
         send() {
             this.errors = this.validateData();
 
             if ( !this.errors.length ) {
                 this.formValidOrderData(this.orderData)
                 this.sendOrder();
+            }
+        },
+
+        checkPaymentState() {
+
+            const params = (new URL(document.location.href)).searchParams;
+            if ( !params.has('code') ) return;
+
+            const message =  params.get('message');
+
+            if ( params.get('code') == 400 ) {
+                showNoty('error', message, 10000);
+                return;
+            }
+
+            if ( params.get('code') == 200 ) {
+                showNoty('success', message, 10000);
+                return;
             }
         },
     },
@@ -106,10 +123,7 @@ export default {
     },
 
     created() {
-        const query = document.location;
-        console.log(document.location.query);
-
-        
+        this.checkPaymentState();
     }
 }
 </script>

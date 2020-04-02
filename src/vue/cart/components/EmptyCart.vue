@@ -7,7 +7,7 @@
 			.cart__empty-text
 				p В вашей корзине пока ничего нет!
 				p Желаем приятных покупок
-			a.cart__empty-catalog-link.button(href="/Katalog") Перейти в каталог
+			a.cart__empty-catalog-link.button(href="/Katalog/Shveynoe-oborudovanie/") Перейти в каталог
 		template(v-else)
 			.cart__empty-text
 				p Загрузка корзины...

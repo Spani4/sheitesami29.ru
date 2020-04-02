@@ -16,11 +16,11 @@
             .cart-item__count
                 .cart-item__count-control
                     .cart-item__count-btn(
-                        @click=" product.count > 1 ? product.count-- : '' "
+                        @click="decreaseCount"
                     ) -
                     .cart-item__count-state {{ product.count }}
                     .cart-item__count-btn(
-                        @click="product.count++"
+                        @click="increaseCount"
                     ) +
                 .cart-item__total-price {{ product.price * product.count }} &#x20bd;
         
@@ -29,6 +29,7 @@
 
 
 <script>
+import debounce from 'lodash.debounce';
 import { mapActions } from 'vuex';
 
 export default {
@@ -44,10 +45,26 @@ export default {
     },
 
     methods:  {
-        ...mapActions(['removeItemFromCart']),
+        ...mapActions([
+            'removeItemFromCart',
+            'sendItemCount'
+        ]),
+
+        decreaseCount() {
+            if ( !(this.product.count > 1) ) return;
+            this.product.count--;
+            this.debouncedSetItemCount();
+        },
+
+        increaseCount() {
+            this.product.count++;
+            this.debouncedSetItemCount();
+        },
+
+        debouncedSetItemCount: debounce(function() {
+            this.sendItemCount(this.product);
+        }, 500),
     },
-    
-    created() {}
 }
 </script>
 

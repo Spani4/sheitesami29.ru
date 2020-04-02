@@ -21,12 +21,14 @@
                 type="button"
                 @click="send"
             ) Подтвердить заказ
+            
         empty-cart(v-else)
+
 </template>
 
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions, mapMutations } from 'vuex';
 
 import cartItems from "./components/CartItems.vue";
 import orderForm from "./components/OrderForm.vue";
@@ -64,22 +66,26 @@ export default {
     },
 
     methods: {
+
+        ...mapActions(['sendOrder']),
+        ...mapMutations(['formValidOrderData']),
+
         validateData() {
             let errors = [];
             
-            if ( this.orderData.name.trim().length == 0 ) errors.push('Вы не указали имя');
+            if ( !(/^.{1,50}$/.test(this.orderData.name)) ) errors.push('Вы не указали имя');
 
-            if ( this.orderData.surname.trim().length == 0 ) errors.push('Вы не указали фамилию');
+            if ( !(/^.{1,50}$/.test(this.orderData.surname)) ) errors.push('Вы не указали фамилию');
 
             if ( !(/^.+@.+\..+$/.test(this.orderData.email)) )  errors.push('Некорректный email');
 
             if ( this.orderData.phone.length == 0 )  errors.push('Не указан номер телефона')
             else if ( this.orderData.phone.length < 11 )  errors.push('Некорректный номер телефона');
 
-            if ( this.orderData.country.trim().length == 0 ) errors.push('Не указана страна доставки');
-            if ( this.orderData.city.trim().length == 0 ) errors.push('Не указан город доставки');
-            if ( this.orderData.delivery.trim().length == 0 ) errors.push('Укажите способ доставки');
-            if ( this.orderData.payment.trim().length == 0 ) errors.push('Укажите способ оплаты');
+            if ( !(/^.{1,50}$/.test(this.orderData.country)) ) errors.push('Не указана страна доставки');
+            if ( !(/^.{1,50}$/.test(this.orderData.city)) ) errors.push('Не указан город доставки');
+            if ( this.orderData.delivery.length == 0 ) errors.push('Укажите способ доставки');
+            if ( this.orderData.payment.length == 0 ) errors.push('Укажите способ оплаты');
 
             return errors;
         },
@@ -88,6 +94,10 @@ export default {
         send() {
             this.errors = this.validateData();
 
+            if ( !this.errors.length ) {
+                this.formValidOrderData(this.orderData)
+                this.sendOrder();
+            }
         },
     },
 

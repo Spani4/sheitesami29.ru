@@ -73,7 +73,7 @@
                             option(
                                 v-for="(option, index) in paymentOptions"
                                 :value="index"
-                            ) {{ option }}
+                            ) {{ option.text }}
 </template>
 
 <script>
@@ -95,16 +95,25 @@ export default {
 
             deliveryOptions: [{
                 text: 'Самовывоз с 11:00 до 19:00',
-                price: 0
+                price: 0,
+                value: 'Самовывоз' // для api
             }, {
                 text: 'Почтой России',
-                price: 250
+                price: 250,
+                value: 'Доставка почтой'
             }, {
                 text: 'Доставка СДЭК',
                 price: 250,
+                value: 'Доставка СДЭК'
             }],
 
-            paymentOptions: ['Онлайн оплата картой', 'При получении (самовывоз)'],
+            paymentOptions: [{
+                    text: 'Онлайн оплата картой',
+                    value: 'Онлайн',
+                }, {
+                    text: 'При получении (самовывоз)',
+                    value: 'При получении'
+                }],
 
             phoneMask: {
                 mask: '+{7} (000) 000-00-00',
@@ -119,11 +128,11 @@ export default {
     watch: {
         delivery(newVal) {
             this.orderData.deliveryPrice = this.deliveryOptions[this.delivery].price;
-            this.orderData.delivery = this.deliveryOptions[this.delivery].text;
+            this.orderData.delivery = this.deliveryOptions[this.delivery].value;
         },
 
         payment(newVal) {
-            this.orderData.payment = this.paymentOptions[newVal];
+            this.orderData.payment = this.paymentOptions[newVal].value;
             if ( newVal == 1 ) { // (если оплата при получении, переключить доставку на самовывоз)
                 this.delivery = 0;
             }
@@ -133,10 +142,6 @@ export default {
     directives: {
         imask: IMaskDirective,    
     },
-
-    created() {
-
-    }
 }
 </script>
 

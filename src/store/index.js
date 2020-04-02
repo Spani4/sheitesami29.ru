@@ -13,11 +13,13 @@ export default new Vuex.Store({
 		cartItems: [],
 
 		orderData: {},
+
+		cartLoaded: false,
 	},
 
 	actions: {
 
-		fetchCartItems({commit, getters}) {
+		fetchCartItems({commit}) {
 
 			const link = api.cartItems;
 			
@@ -31,7 +33,7 @@ export default new Vuex.Store({
 			});
 		},
 
-		addItemToCart({commit, getters}, item) {
+		addItemToCart({commit}, item) {
 
 			const link = api.cartItems;
 
@@ -56,8 +58,17 @@ export default new Vuex.Store({
 				showNoty('error', 'Ошибка соединения');
 			});
 		},
+
+		sendItemCount({commit}, item) {
+
+			const link = `${api.cartItems}/${item.id}`;
+			const body = JSON.stringify([{op: "add", path: "/count", value: item.count}]);
+
+			fetch(link, { method: 'PATCH', body })
+				.catch(e => console.log(e));
+		},
 		
-		removeItemFromCart({commit, getters}, item) {
+		removeItemFromCart({commit}, item) {
 			
 			const link = `${api.cartItems}/${item.id}`;
 			
@@ -67,6 +78,21 @@ export default new Vuex.Store({
 			}).catch( err => {
 				showNoty('error', err);
 			});
+		},
+
+		sendOrder({state}) {
+
+			const link = api.orders;
+			const body = JSON.stringify(state.orderData);
+
+			fetch(link, { method: 'POST', body })
+				.then(response => {
+					if ( response.ok ) {
+						showNoty('success', 'Заказ успешно оформлен', 10000);
+					}
+				}).catch(e => {
+					console.log(e);
+				});
 		}
 	},
 
@@ -74,6 +100,7 @@ export default new Vuex.Store({
 
 		setCartItems(state, cartItems) {
 			state.cartItems = cartItems;
+			state.cartLoaded = true;
 		},
 
 		addItemToCart(state, item) {
@@ -82,12 +109,19 @@ export default new Vuex.Store({
 		
 		removeItemFromCart(state, item) {
 			state.cartItems = state.cartItems.filter(cartItem => cartItem.id != item.id);
+		},
+
+		formValidOrderData(state, orderData) {
+			state.orderData['ФИО'] = `${orderData.surname} ${orderData.name}`;
+			state.orderData['Страна'] = orderData.country;
+			state.orderData['Город'] = orderData.city
+			state.orderData['Телефоны'] = [orderData.phone];
+			state.orderData['Электронные почты'] = [orderData.email];
+			state.orderData['Способ получения'] = orderData.delivery;
+			state.orderData['Способ оплаты'] = orderData.payment;
 		}
 	},
 
-	getters: {
-
-
-	}
+	getters: {}
 
 })

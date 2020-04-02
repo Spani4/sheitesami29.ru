@@ -105,7 +105,12 @@ export default {
         ...mapState(['cartItems']),
     },
 
-    created() {}
+    created() {
+        const query = document.location;
+        console.log(document.location.query);
+
+        
+    }
 }
 </script>
 

@@ -80,7 +80,7 @@ export default new Vuex.Store({
 			});
 		},
 
-		sendOrder({state}) {
+		sendOrder({state, commit}) {
 
 			const link = api.orders;
 			const body = JSON.stringify(state.orderData);
@@ -89,6 +89,16 @@ export default new Vuex.Store({
 				.then(response => {
 					if ( response.ok ) {
 						showNoty('success', 'Заказ успешно оформлен', 10000);
+						return response.json();
+					}
+				}).then(result => {
+					console.log(result);
+					if ( result._links.payment ) {
+						const a = document.createElement('a');
+						a.href = result._links.payment.href;
+						a.click();
+					} else {
+						commit('setCartItems', []);
 					}
 				}).catch(e => {
 					console.log(e);

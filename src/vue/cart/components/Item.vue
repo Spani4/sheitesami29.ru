@@ -11,7 +11,7 @@
         .cart-item__details
             a.cart-item__title(
                 :title="product.title"
-                :href="product._links.self.href"
+                :href="product.pageRef"
             ) {{ product.title }}
             .cart-item__count
                 .cart-item__count-control

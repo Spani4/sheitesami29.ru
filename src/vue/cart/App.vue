@@ -10,7 +10,7 @@
                     :deliveryPrice="orderData.deliveryPrice"
                 )
 
-            transition(name="grow")    
+            transition(name="fade")    
                 ul.cart__errors(v-if="errors.length > 0")
                     li(
                         v-for="error in errors"
@@ -23,6 +23,7 @@
             ) Подтвердить заказ
             
         empty-cart(v-else)
+
 
 </template>
 
@@ -130,13 +131,13 @@ export default {
 
 <style lang="scss" scoped>
 
-.grow-enter,
-.grow-leave {
+.fade-enter,
+.fade-leave {
     opacity: 0;
 }
 
-.grow-enter-active,
-.grow-leave-active {
+.fade-enter-active,
+.fade-leave-active {
     transition: opacity .3s;
 }
 </style>

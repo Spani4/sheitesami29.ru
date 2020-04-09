@@ -74,11 +74,18 @@
                                 v-for="(option, index) in paymentOptions"
                                 :value="index"
                             ) {{ option.text }}
+
+
+                    .cart__payment(v-if="orderData.payment == 'Онлайн' ")
+                        img(:src="images.payments")
+                    
 </template>
 
 <script>
+import paymentsImg from '../../../images/payments.png';
 
-import { IMaskDirective } from "vue-imask";
+
+import { IMaskDirective } from 'vue-imask';
 import { eventBus } from '../';
 
 export default {
@@ -117,6 +124,10 @@ export default {
 
             phoneMask: {
                 mask: '+{7} (000) 000-00-00',
+            },
+
+            images: {
+                payments: paymentsImg,
             }
         };
     },

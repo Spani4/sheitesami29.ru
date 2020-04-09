@@ -108,6 +108,7 @@
             content: "*";
             color: $color3;
         }
+
     }
 
 
@@ -182,6 +183,10 @@
     &__send-btn {
         display: block;
         margin: 60px auto;
+
+        @include screen(585) {
+            margin-top: 30px;
+        }
     }
 
     &__empty {

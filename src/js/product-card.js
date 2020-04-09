@@ -5,6 +5,7 @@ import LazyLoad from "vanilla-lazyload";
 import initGlobalScripts from "./global";
 import { initNewProductCardSlider } from "./components/sliders";
 import initProducrCard from "./components/initProductCard";
+import initZoom from "./utils/initZoom";
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,4 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initGlobalScripts();
     initNewProductCardSlider();
     initProducrCard();
+
+    initZoom(document.querySelector('.js-zoom'));
 });

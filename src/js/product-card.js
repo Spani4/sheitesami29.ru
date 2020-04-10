@@ -3,7 +3,11 @@ import "../scss/product-card.scss";
 import LazyLoad from "vanilla-lazyload";
 
 import initGlobalScripts from "./global";
-import { initNewProductCardSlider } from "./components/sliders";
+import {
+    initProductCardImageThumbs,
+    initNewProductCardRelatedSlider
+} from "./components/sliders";
+
 import initProducrCard from "./components/initProductCard";
 import initZoom from "./utils/initZoom";
 
@@ -14,9 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         elements_selector: '[data-bg], [data-src]',
     });
 
+    const productImage = document.querySelector('.js-zoom');
+
     initGlobalScripts();
-    initNewProductCardSlider();
+    initProductCardImageThumbs(productImage);
+    initNewProductCardRelatedSlider();
     initProducrCard();
 
-    initZoom(document.querySelector('.js-zoom'));
+    initZoom(productImage);
 });

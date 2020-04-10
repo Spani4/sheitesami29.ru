@@ -16,14 +16,12 @@
 
 .product-card {
 
-    $image-height-desktop: 516px;
-    $image-height-tablet: 516px * 0.75;
+    $image-height-desktop: 500px;
+    $image-height-tablet: 500px * 0.75;
 
     @extend %outer;
 
     padding-bottom: 60px;
-
-
 
     &__title.page-title {
         letter-spacing: normal;
@@ -53,6 +51,8 @@
     }
 
     &__col {
+        
+        margin: 0 auto;
 
         &-image {
             width: 400px;
@@ -85,8 +85,10 @@
     }
 
     &__product-image {
+
         width: 100%;
         height: $image-height-desktop;
+        margin-bottom: 10px;
 
         box-shadow: 0px 0px 10px rgba(83, 81, 61, 0.4);
         background-color: #fff;
@@ -97,12 +99,37 @@
         @include screen(991) {
             height: $image-height-tablet;
         }
+
+        &-thumbs {
+
+            .swiper-container {
+                
+                margin: 0 -5px;
+                padding: 0 5px;
+            }
+
+            &-item.swiper-slide {
+                height: 170px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                background-color: #fff;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: contain;
+                cursor: pointer;
+                box-shadow: 0px 0px 2px rgba(83, 81, 61, 0.4);
+
+                &.active {
+                    outline: 1px solid $main-font-color;
+                }
+            }
+        }
     }
 
     &__info {
 
         @include flex(col,sb);
-        height: $image-height-desktop;
+        min-height: 100%;
         
         @include screen(991) {
             height: $image-height-tablet;
@@ -230,7 +257,7 @@
         }
 
         &-content-inner {
-            height: 300px;
+            height: 450px;
             overflow: hidden;
 
             @include screen(991) {
@@ -244,7 +271,7 @@
 
         &-content-item {
             position: relative;
-            height: 330px;
+            height: 480px;
             line-height: 150%;
 
             @include screen(991) {
@@ -260,7 +287,7 @@
                 position: absolute;
                 width: 100%;
                 height: 40px;
-                bottom: 30px; //330-300
+                bottom: 30px; //480-450
                 background-image: linear-gradient(to bottom, transparent 20%, $bg-color);
             }
         }

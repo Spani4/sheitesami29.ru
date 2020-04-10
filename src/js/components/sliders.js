@@ -11,7 +11,7 @@ export function initMainSlider() {
     const section = document.querySelector('.main-slider');
     if ( section == null ) return;
     const swiperContainer = section.querySelector('.swiper-container');
-    const swiper = new Swiper(swiperContainer, sliderConfig.main);
+    new Swiper(swiperContainer, sliderConfig.main);
 }
 
 export function initPopularProductsSlider() {
@@ -19,7 +19,7 @@ export function initPopularProductsSlider() {
     const section = document.querySelector('.popular-products');
     if ( section == null ) return;
     const swiperContainer = section.querySelector('.swiper-container');
-    const swiper = new Swiper(swiperContainer, sliderConfig.popular);
+    new Swiper(swiperContainer, sliderConfig.popular);
 }
 
 export function initNewProductsSlider() {
@@ -27,15 +27,32 @@ export function initNewProductsSlider() {
     const section = document.querySelector('.new-products');
     if ( section == null ) return;
     const swiperContainer = section.querySelector('.swiper-container');
-    const swiper = new Swiper(swiperContainer, sliderConfig.new);
+    new Swiper(swiperContainer, sliderConfig.new);
 }
 
-export function initNewProductCardSlider() {
+export function initProductCardImageThumbs(productImage) {
+
+    const section = document.querySelector('.js-image-thumbs');
+    if ( section == null ) return;
+    const swiperContainer = section.querySelector('.swiper-container');
+    const slides = swiperContainer.querySelectorAll('.swiper-slide');
+
+    new Swiper(swiperContainer, sliderConfig.productCardImageThumbs);
+  
+    slides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            productImage.style.backgroundImage = slide.style.backgroundImage;
+        });
+    });
+}
+
+
+export function initNewProductCardRelatedSlider() {
 
     const section = document.querySelector('.product-card__slider-section');
     if ( section == null ) return;
     const swiperContainer = section.querySelector('.swiper-container');
-    const swiper = new Swiper(swiperContainer, sliderConfig.productCard);
+    new Swiper(swiperContainer, sliderConfig.productCardRelated);
 }
 
 export function initMainPageSliders() {

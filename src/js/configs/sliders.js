@@ -14,9 +14,7 @@ export default {
 
     popular: {
         
-        // loop: true,
         slidesPerView: 1,
-        // lazy: false,
 
         navigation: {
             nextEl: '.popular-products .js-next-btn',
@@ -36,9 +34,7 @@ export default {
 
     new: {
         
-        // loop: true,
         slidesPerView: 1,
-        // lazy: false,
 
         navigation: {
             nextEl: '.new-products .js-next-btn',
@@ -56,7 +52,7 @@ export default {
         }        
     },
 
-    productCard: {
+    productCardRelated: {
         slidesPerView: 1,
 
         breakpoints: {
@@ -68,5 +64,11 @@ export default {
         lazy: {
             loadPrevNext: true,
         },
-    }
+    },
+
+    productCardImageThumbs: {
+        slidesPerView: 3,
+        speed: 300,
+        spaceBetween: 10,
+    },
 }

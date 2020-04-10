@@ -1,6 +1,7 @@
 const productCard = document.querySelector('.js-product-item');
 const rollElem = productCard.querySelector('.js-roll-elem');
 const contents = productCard.querySelectorAll('.js-content');
+const initialHeight = productCard.offsetHeight;
 
 function initTabs() {
     
@@ -36,21 +37,23 @@ function initUnroll(content) {
     rollBtn.onclick = rollToggle;
 
     if ( collapsible.offsetHeight >= collapsible.scrollHeight ) {
-
         rollBtn.classList.add('hidden');
     } else {
-
         rollBtn.classList.remove('hidden');
     }
 
-    if ( rollElem.classList.contains('unrolled' )) {
+    console.log(initialHeight);
+    console.log(collapsible.offsetHeight);
+    console.log(collapsible.scrollHeight);
+    
+    // if ( rollElem.classList.contains('unrolled') ) {
+    if ( rollElem.classList.contains('unrolled') && !(initialHeight == productCard.offsetHeight)) {
         rollBtn.classList.remove('hidden');
     }
 }
 
 function rollToggle() {
     rollElem.classList.toggle('unrolled');
-    console.log('toggle')
 }
 
 export default function() {

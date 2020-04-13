@@ -42,11 +42,6 @@ function initUnroll(content) {
         rollBtn.classList.remove('hidden');
     }
 
-    console.log(initialHeight);
-    console.log(collapsible.offsetHeight);
-    console.log(collapsible.scrollHeight);
-    
-    // if ( rollElem.classList.contains('unrolled') ) {
     if ( rollElem.classList.contains('unrolled') && !(initialHeight == productCard.offsetHeight)) {
         rollBtn.classList.remove('hidden');
     }

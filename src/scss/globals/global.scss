@@ -10,6 +10,7 @@ body {
     position: relative;
     min-height: 100vh;
     top: 0 !important;
+    overflow-x: hidden;
     color: $main-font-color;
 
 }

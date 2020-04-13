@@ -1,0 +1,50 @@
+@import "globals/global";
+
+@import "modules/header";
+@import "modules/header-mobile";
+@import "modules/nav";
+@import "modules/nav-mobile";
+@import "modules/footer";
+
+
+@import "components/favorite-item";
+@import "components/wrapper";
+@import "components/section";
+@import "components/link-social";
+@import "components/buttons";
+@import "components/page-title";
+
+
+.favorites {
+
+    @extend %outer;
+
+    &__list > * {
+        @include flex(row,fs,fs,wrap);
+        margin: 0 -10px;
+
+        @include screen(585) {
+            justify-content: center;
+        }
+    }
+
+    &__item {
+        width: 25%;
+        padding: 0 10px;
+        margin-bottom: 30px;
+        
+        @include screen(991) {
+            width: 33.333333%;
+        }
+
+        @include screen(768) {
+            width: 50%;
+        }
+
+        @include screen(585) {
+            width: 100%;
+            max-width: 400px;
+        }
+    }
+
+}

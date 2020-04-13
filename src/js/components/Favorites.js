@@ -25,7 +25,7 @@ export default class Favorites {
     }
 
     markItemsById(productId) {
-		// if there are several product items with given ID on the page
+		// если на странице несколько карточек одного и того же товара
         const filteredById = [...this.productItems].filter(productItem => productItem.dataset.productId == productId);
         filteredById.forEach( item => {
             item.classList.toggle('is-favorite');
@@ -33,8 +33,9 @@ export default class Favorites {
     }
 
     markFavoriteItems() {
-		// when page loaded
+		// по загрузке страницы
         const storageFavorites = JSON.parse(localStorage.getItem('favorites'));
+
         if ( !storageFavorites ) return;
         if ( !storageFavorites.length ) return;
     

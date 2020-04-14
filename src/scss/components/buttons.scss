@@ -13,8 +13,18 @@
     cursor: pointer;
 
     &:hover {
-
         box-shadow: 0px 0px 15px $color3;
+    }
+
+    &:active {
+        box-shadow: none;
+    }
+
+    &:disabled {
+        opacity: .65;
+        cursor: default;
+
+        &:hover {box-shadow: none;}
     }
 }
 

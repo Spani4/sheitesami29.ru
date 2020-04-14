@@ -6,7 +6,6 @@ import api from '../js/configs/api';
 
 Vue.use(Vuex);
 
-
 export default new Vuex.Store({
 
 	state: {
@@ -86,12 +85,8 @@ export default new Vuex.Store({
 			const body = JSON.stringify(state.orderData);
 
 			fetch(link, { method: 'POST', body })
-				.then(response => {
-					if ( response.ok ) {
-						showNoty('success', 'Заказ успешно оформлен', 10000);
-						return response.json();
-					}
-				}).then(result => {
+				.then(response => response.json())
+				.then(result => {
 					const a = document.createElement('a');
 
 					if ( result._links.payment ) {

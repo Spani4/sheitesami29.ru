@@ -5,7 +5,7 @@
             @click="removeItemFromCart(product)"
         ) &times;
         .cart-item__image(
-            :style="{ backgroundImage: `url(${product.picture})` }"
+            :style="{ backgroundImage: `url(${itemImage})` }"
         )
             //- .cart-item__avalability в наличии
         .cart-item__details
@@ -31,6 +31,7 @@
 <script>
 import debounce from 'lodash.debounce';
 import { mapActions } from 'vuex';
+import noImage from '../../../images/no-image.svg';
 
 export default {
 
@@ -65,6 +66,12 @@ export default {
             this.sendItemCount(this.product);
         }, 500),
     },
+
+    computed: {
+        itemImage() {
+            return this.product.picture ? this.product.picture : noImage ;
+        }
+    }
 }
 </script>
 

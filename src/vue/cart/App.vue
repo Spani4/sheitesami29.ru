@@ -20,10 +20,11 @@
             button.cart__send-btn.button(
                 type="button"
                 @click="send"
-            ) Подтвердить заказ
+                :class="{ pending: isSending }"
+                :disabled="isSending"
+            ) {{ isSending ? 'Отправляем заказ...' : 'Подтвердить заказ' }}
             
         empty-cart(v-else)
-
 
 </template>
 
@@ -51,6 +52,7 @@ export default {
     data() {
         return {
             errors: [],
+            isSending: false,
 
             orderData: {
                 name: '',
@@ -97,6 +99,7 @@ export default {
             if ( !this.errors.length ) {
                 this.formValidOrderData(this.orderData)
                 this.sendOrder();
+                this.isSending = true;
             }
         },
 

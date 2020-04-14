@@ -59,7 +59,7 @@
         }
 
         &-group-wrapper {
-            @include flex(row,s,s)
+            @include flex(row,s,s);
 
             @include screen(585) {
                 @include flex(col,fs);
@@ -108,7 +108,6 @@
             content: "*";
             color: $color3;
         }
-
     }
 
 
@@ -187,6 +186,12 @@
         @include screen(585) {
             margin-top: 30px;
         }
+
+        &.pending {
+            outline-style: solid;
+            outline-width: 1px;
+            animation: cart-btn-pending 1s linear 0s infinite ;
+        }
     }
 
     &__empty {
@@ -210,5 +215,18 @@
         &-catalog-link {
             display: block;
         }
+    }
+}
+
+@keyframes cart-btn-pending {
+
+    0% {
+        outline-offset: 0;
+        outline-color: rgba($color3, 1);
+    }
+
+    100% {
+        outline-offset: 30px;
+        outline-color: rgba($color3, 0);
     }
 }

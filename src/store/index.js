@@ -92,16 +92,18 @@ export default new Vuex.Store({
 						return response.json();
 					}
 				}).then(result => {
-					console.log(result);
+					const a = document.createElement('a');
+
 					if ( result._links.payment ) {
-						const a = document.createElement('a');
 						a.href = result._links.payment.href;
 						a.click();
 					} else {
-						commit('setCartItems', []);
+						a.href = `${document.location.href}?code=200&message=Заказ успешно оформлен`;
 					}
-				}).catch(e => {
-					console.log(e);
+					a.click();
+				}).catch(err => {
+					console.error('Sending order error');
+					console.error(err);
 				});
 		}
 	},

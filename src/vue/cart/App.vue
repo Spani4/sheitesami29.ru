@@ -107,14 +107,12 @@ export default {
 
             const message =  params.get('message');
 
-            if ( params.get('code') == 400 ) {
-                showNoty('error', message, 10000);
-                return;
-            }
-
             if ( params.get('code') == 200 ) {
-                showNoty('success', message, 10000);
-                return;
+                const message2 = 'Подробности заказа отправлены на указанный адрес электронной почты.'
+                showNoty('success', message, 30000);
+                showNoty('success', message2, 30000);
+            } else {
+                showNoty('error', message, 30000);
             }
         },
     },

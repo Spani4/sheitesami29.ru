@@ -48,6 +48,22 @@
                 &:hover {box-shadow: none;}
             }
         }
+        &.compact {
+            .product-card__tabs-content-inner {
+                height: 300px;
+
+                @include screen(991) {
+                    height: 180px;
+                }
+            }
+            .product-card__tabs-content-item {
+                height: 330px;
+
+                @include screen(991) {
+                    height: 210px;
+                }
+            }
+        }
     }
 
     &__col {
@@ -88,7 +104,7 @@
 
         width: 100%;
         height: $image-height-desktop;
-        margin-bottom: 10px;
+        margin-top: 10px;
 
         box-shadow: 0px 0px 10px rgba(83, 81, 61, 0.4);
         background-color: #fff;
@@ -101,6 +117,8 @@
         }
 
         &-thumbs {
+
+            margin-top: 10px;
 
             .swiper-container {
                 
@@ -133,6 +151,9 @@
         
         @include screen(991) {
             height: $image-height-tablet;
+        }
+        @include screen(768) {
+            height: auto;
         }
 
         &-top {
@@ -261,8 +282,11 @@
             overflow: hidden;
 
             @include screen(991) {
-                height: 180px;
+                height: 370px;
                 font-size: 16px;
+            }
+            @include screen(768) {
+                height: 180px;
             }
             @include screen(480) {
                 font-size: 14px;
@@ -275,6 +299,9 @@
             line-height: 150%;
 
             @include screen(991) {
+                height: 400px;
+            }
+            @include screen(768) {
                 height: 210px;
             }
 

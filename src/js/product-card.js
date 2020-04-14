@@ -18,12 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         elements_selector: '[data-bg], [data-src]',
     });
 
+    const productItem = document.querySelector('.js-product-item');
     const productImage = document.querySelector('.js-zoom');
 
     initGlobalScripts();
-    initProductCardImageThumbs(productImage);
     initNewProductCardRelatedSlider();
     initProducrCard();
+    
+    const hasThumbs = initProductCardImageThumbs(productImage);
+    if ( !hasThumbs ) productItem.classList.add('compact');
 
     initZoom(productImage);
 });

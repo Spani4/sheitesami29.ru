@@ -8,7 +8,7 @@
         :style="{ backgroundImage: `url('${itemImage}')` }"
     )
     .favorite-item__info
-        h3.favorite-item__title(:title="item.title") 
+        h3.favorite-item__title
             a(:href="item.pageRef") {{ item.title }}
         .favorite-item__price {{ item.price }} &#x20bd;
     button.favorite-item__cart-btn.button(

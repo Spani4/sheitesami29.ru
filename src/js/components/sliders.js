@@ -33,7 +33,8 @@ export function initNewProductsSlider() {
 export function initProductCardImageThumbs(productImage) {
 
     const section = document.querySelector('.js-image-thumbs');
-    if ( section == null ) return;
+    if ( section == null ) return false; //false - нет доп изображений
+
     const swiperContainer = section.querySelector('.swiper-container');
     const slides = swiperContainer.querySelectorAll('.swiper-slide');
 
@@ -44,6 +45,8 @@ export function initProductCardImageThumbs(productImage) {
             productImage.style.backgroundImage = slide.style.backgroundImage;
         });
     });
+
+    return true; //true - есть доп изображения
 }
 
 

@@ -5,6 +5,19 @@
     "extensions",
     "reset";
 
+@import "modules/header";
+@import "modules/header-mobile";
+@import "modules/nav";
+@import "modules/nav-mobile";
+@import "modules/footer";
+@import "modules/main-slider";
+
+@import "components/wrapper";
+@import "components/section";
+@import "components/link-social";
+@import "components/buttons";
+@import "components/custom-text";
+
 body {
     @include flex(col);
     position: relative;

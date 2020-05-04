@@ -15,13 +15,13 @@ header.header
                         type='button', 
                         onclick='doGTranslate("ru|en"); return false;'
                         ) EN
-                #header-panel.header__icons
+                .header__icons
                     a.header__icons-item.icon-btn.js-favorites(href="cart.html", aria-label="Избранное")
                         svg.icon
                             use(href="/icons/icons.svg#heart")
-                    a.header__icons-item.icon-btn.js-cart(href="#"
+                    a#header-cart-counter.header__icons-item.icon-btn.js-cart(href="cart.html"
                         aria-label="Корзина"
-                        data-api-link-cart="https://ss.1mcg.ru/api/cart/items"
+                        data-api-link-cart="https://sheitesami29.ru/api/cart/items"
                     )
                         cart-counter
                         svg.icon
@@ -29,6 +29,9 @@ header.header
                     button.header__icons-item.icon-btn.js-search-btn(type="button", aria-label="Поиск")
                         svg.icon
                             use(href="/icons/icons.svg#search")
+                .header__search
+                    include ../components/search.pug
+                
                     
                         
         .header__nav.js-drop-nav

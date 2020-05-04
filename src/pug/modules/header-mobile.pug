@@ -6,21 +6,25 @@ header.header-mobile.js-header-mobile
                 .header-mobile__burger-elem
                 .header-mobile__burger-elem
                 .header-mobile__burger-elem
-            button.header-mobile__icons-item.icon-btn(type="button", aria-label="Поиск")
+            button.header-mobile__icons-item.icon-btn.js-search-btn(type="button", aria-label="Поиск")
                 svg.icon
                     use(href="/icons/icons.svg#search")
 
         .header-mobile__section
             a.header-mobile__logo(href="/", style=`background-image:url("${require('../../images/logo.svg')}")`)
 
-        #header-mobile-panel.header-mobile__section
+        .header-mobile__section
             a.header-mobile__icons-item.icon-btn.js-favorites(href="cart.html", aria-label="Избранное")
                 svg.icon
                     use(href="/icons/icons.svg#heart")
-            a.header-mobile__icons-item.icon-btn.js-cart(href="#", aria-label="Корзина")
+            a#header-mobile-cart-counter.header-mobile__icons-item.icon-btn.js-cart(href="#", aria-label="Корзина")
                 cart-counter
                 svg.icon
                     use(href="/icons/icons.svg#cart")
+                    
+    .header-mobile__search
+        include ../components/search.pug
+
 
     .header-mobile__dropdown.js-drop-nav
         include ./nav-mobile.pug

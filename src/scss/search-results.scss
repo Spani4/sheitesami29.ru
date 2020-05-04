@@ -1,0 +1,31 @@
+@import "globals/global";
+
+@import "components/product-item";
+@import "components/page-title";
+
+.search-results {
+
+    @extend %outer;
+    margin-bottom: 40px;
+
+    &__content {
+        @include flex(row,fs,s,wrap);
+        margin: 0 -10px;
+    }
+
+    &__item {
+        @extend %centered;
+        width: 25%;
+        padding: 10px;
+
+        @include screen(1199) {
+            width: 33%;
+        }
+        @include screen(991) {
+            width: 50%;
+        }
+        @include screen(575) {
+            width: 100%;
+        }
+    }
+}

@@ -6,8 +6,8 @@ function find(value) {
     if ( !value.length ) return;
 
     const a = document.createElement('a');
-    const url = new URL('/search', document.location.origin);
-    url.searchParams.set('search', value);
+    const url = new URL('/Poisk', document.location.origin);
+    url.searchParams.set('query', value);
     a.href = url;
     a.click();
 }
@@ -27,7 +27,6 @@ function initSearchBlock(searchBlock) {
     });
 
     input.addEventListener('keydown', (e) => {
-        console.log(e.key)
         if (e.key == 'Enter') find(input.value);
         if (e.key == 'Escape') searchBlock.classList.add('hidden');
     });
